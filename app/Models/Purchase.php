@@ -19,12 +19,12 @@ class Purchase extends Model
     // protected $primaryKey = 'Purchase_id';
     // use HasFactory, Sluggable;
     protected $fillable = [
-        'nama',
-        'deskripsi',
-        'harga',
-        'jumlah_barang',
-        'total_harga', // Pastikan 'author_id' termasuk di sini
-        'tanggal', // Pastikan 'author_id' termasuk di sini
+        'product_id',
+        'stok_masuk',
+        'harga_beli',
+        'jumlah_harga_beli', // Pastikan 'author_id' termasuk di sini
+        'tanggal_produksi', // Pastikan 'author_id' termasuk di sini
+        'tanggal_kedaluwarsa', // Pastikan 'author_id' termasuk di sini
     ];
 
     // protected $with = ['author', 'category'];
@@ -52,21 +52,9 @@ class Purchase extends Model
     //     return $this->belongsTo(User::class);
     // }
 
-    // public function category(): BelongsTo
-    // {
-    //     return $this->belongsTo(Category::class);
-    // }
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
 
-    // public function getRouteKeyName(){
-    // return 'slug';
-    // }
-
-    // public function sluggable(): array
-    // {
-    //     return [
-    //         'slug' => [
-    //             'source' => 'title'
-    //         ]
-    //     ];
-    // }
 }

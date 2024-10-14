@@ -31,10 +31,10 @@
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
 
-        <input class="p-2  rounded-xl border @error('email') is-invalid @enderror" type="email" name="email" id="email" placeholder="Email" autocomplete="off" required value="{{ old('email')}}">
+        <!-- <input class="p-2  rounded-xl border @error('email') is-invalid @enderror" type="email" name="email" id="email" placeholder="Email" autocomplete="off" required value="{{ old('email')}}">
         @error('email')
             <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+        @enderror -->
 
         <input class="p-2  rounded-xl border @error('password') is-invalid @enderror" type="password" name="password" id="password" placeholder="Password" autocomplete="off" required>
         @error('password')

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   @vite(['resources/css/app.css','resources/js/app.js'])
   <title>{{ $title }}</title>
+  <link rel="icon" href="{{url('/img/R.png')}}">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
@@ -18,6 +19,30 @@
         trix-toolbar [data-trix-button-group="file-tools"] {
             display: none;
         }
+  </style>
+
+  <!-- fitur pencarian dropdown -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+  <!-- mengatur tinggi select2 -->
+  <style>
+    .select2-container .select2-selection--single {
+        height: 40px; /* Atur tinggi sesuai kebutuhan */
+        line-height: 40px; /* Sesuaikan agar teks berada di tengah */
+        border-radius: 0.5rem; /* Atur border radius sesuai kebutuhan */
+    }
+    .select2-container .select2-selection--single .select2-selection__rendered {
+        line-height: 40px; /* Sesuaikan dengan line-height di atas */
+        font-size: 0.89rem; /* Atur ukuran teks sesuai kebutuhan */
+    }
+    .select2-container .select2-selection--single .select2-selection__arrow {
+        height: 40px; /* Sesuaikan dengan tinggi yang diinginkan */
+        top: 50%; /* Agar panah berada di tengah */
+        transform: translateY(-50%); /* Untuk penyesuaian vertikal */
+    }
+    
   </style>
 </head>
 <body>
@@ -555,13 +580,7 @@
                 href="#"
                 class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group"
               >
-              <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-  <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm4.28 10.28a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 1 0-1.06 1.06l1.72 1.72H8.25a.75.75 0 0 0 0 1.5h5.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3Z" clip-rule="evenodd" />
-</svg> -->
-
-                
-                
-
+            
                 <svg
                  class="mx-auto mb-1 w-7 h-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400" 
                 aria-hidden="true" 
@@ -588,7 +607,7 @@
             <span class="sr-only">Open user menu</span>
             <img
               class="w-8 h-8 rounded-full"
-              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gough.png"
+              src="{{url('/img/id.jpg')}}"
               alt="user photo"
             />
           </button>
@@ -602,10 +621,7 @@
                 class="block text-sm font-semibold text-gray-900 dark:text-white"
                 >{{ auth()->user()->name }}</span
               >
-              <span
-                class="block text-sm text-gray-900 truncate dark:text-white"
-                >name@flowbite.com</span
-              >
+              
             </div>
             <ul
               class="py-1 text-gray-700 dark:text-gray-300"
@@ -711,19 +727,12 @@
                 
                 <form action="/logout" method="post">
                   @csrf
-                  <button type="submit" class="flex items-center px-4 py-2 text-sm text-gray-700"><svg
-                    class="mr-2 w-5 h-5 text-gray-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
+                  <button type="submit" class="flex items-center px-4 py-2 text-sm text-gray-700">
+                  <i class="mr-2 w-5 h-5 text-gray-400">
                     
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/></svg>
+                  </i>  
+                  
                     Logout
                   </button>
                 </form>
@@ -822,7 +831,15 @@
                   href="/dashboard/transaksi/sale"
                   class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group 
                           {{ request()->is('dashboard/transaksi/sale') ? 'bg-gray-100 dark:bg-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }}"
-                  >Penjualan</a
+                  >Penjualan / Kasir</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/dashboard/transaksi/ather"
+                  class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group 
+                          {{ request()->is('dashboard/transaksi/ather') ? 'bg-gray-100 dark:bg-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }}"
+                  >Lain-Lain</a
                 >
               </li>
             </ul>
@@ -830,14 +847,14 @@
 
           <li>
             <a
-              href="/dashboard/posts"
+              href="/dashboard/stok"
               class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white 
-                    {{ request()->is('dashboard/posts') ? 'bg-gray-100 dark:bg-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }} 
+                    {{ request()->is('dashboard/stok') ? 'bg-gray-100 dark:bg-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }} 
                     group"
             >
               <svg 
               class="flex-shrink-0 w-6 h-6 
-                        {{ request()->is('dashboard/posts') ? 'text-gray-900 dark:text-white' : 'text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white' }} 
+                        {{ request()->is('dashboard/stok') ? 'text-gray-900 dark:text-white' : 'text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white' }} 
                         transition duration-75"
               aria-hidden="true" 
               xmlns="http://www.w3.org/2000/svg" 
@@ -858,7 +875,7 @@
         >
           <li>
             <a
-              href="#"
+              href="/dashboard/posts"
               class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
             >
               <svg
@@ -1200,6 +1217,8 @@
       {{ $slot }}
     </main>
   </div>
+
+  <!-- dropdown menu transaksi -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const dropdownButton = document.getElementById('dropdown-button');
@@ -1207,7 +1226,7 @@
 
       // Check the current URL
       const currentPath = window.location.pathname;
-      if (currentPath === '/dashboard/transaksi/purchase' || currentPath === '/dashboard/transaksi/sale') {
+      if (currentPath === '/dashboard/transaksi/purchase' || currentPath === '/dashboard/transaksi/sale' || currentPath === '/dashboard/transaksi/ather') {
         dropdownMenu.classList.remove('hidden'); // Show the dropdown
       }
 
@@ -1217,6 +1236,17 @@
       });
     });
   </script>
+
+
+  <!-- Tambahkan script untuk menginisialisasi Select2 -->
+<!-- <script>
+    $(document).ready(function() {
+        $('#barang_keluar').select2({
+            placeholder: "Pilih Barang Keluar",
+            allowClear: true
+        });
+    });
+</script> -->
 
 </body>
 </html>

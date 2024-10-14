@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Login</title>
+    <link rel="icon" href="{{url('/img/ahsan-logo.png')}}">
 </head>
 <body>
 <section class="bg-gray-50 min-h-screen flex items-center justify-center">

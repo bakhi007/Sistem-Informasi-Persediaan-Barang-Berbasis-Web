@@ -1,120 +1,119 @@
 <x-sidebar>
-  
+<x-slot:title> {{ $title }} </x-slot:title>
   <section class="bg-white dark:bg-gray-900">
   <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
       <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Input Pembelian</h2>
       <form action="/dashboard/transaksi/purchase" method="post">
         @csrf
           <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-            <div class="sm:col-span-2">
-                <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Nama
-                </label>
-                <input 
-                    type="text" 
-                    name="nama" 
-                    id="nama" 
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 
-                        @error('nama') border-red-500 bg-red-50 @enderror
-                        dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    placeholder="Ketikkan nama roti" 
-                    required
-                    autofocus
-                    value="{{ old('nama')}}"
-                >
-                @error('nama')
-                    <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <div class="w-full">
-                <label for="deskripsi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white disabled readonly">Deskripsi</label>
-                <input 
-                    type="text"
-                    name="deskripsi" 
-                    id="deskripsi" 
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 
-                        @error('deskripsi') border-red-500 bg-red-50 @enderror
-                        dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-
-                    placeholder="Ketikkan deskripsi" 
-                    required
-                    value="{{ old('deskripsi')}}" 
-                >
-                @error('deskripsi')
-                    <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
-                @enderror
-            </div>
-            <div>
-    <label for="harga" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">harga</label>
-    <input 
-        type="number"
-        name="harga" 
-        id="harga" 
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 
-            @error('harga') border-red-500 bg-red-50 @enderror
-            dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-        placeholder="Ketikkan harga" 
-        required
-        value="{{ old('harga')}}" 
-        oninput="calculateTotal()"
-    >
-    @error('harga')
-        <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
-    @enderror
+          <div class="w-full">
+    <label for="product" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Produk</label>
+    <select id="product" name="product_id" class="select2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+        @error('product_id') border-red-500 bg-red-50 @enderror
+        dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 w-full"
+        onchange="updateExpiryDate()">
+        
+        <option value="" disabled selected>Pilih Produk</option>
+        @foreach ($products as $product)
+            <option value="{{ $product->id }}" data-masa-berlaku="{{ $product->masa_berlaku }}" 
+                data-price="{{ $product->harga_beli }}" 
+                {{ old('product_id') == $product->id ? 'selected' : '' }}>
+                {{ $product->name }}
+            </option>
+        @endforeach
+    </select>
 </div>
-<div class="w-full">
-    <label for="jumlah_barang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah Barang</label>
-    <input 
-        type="number"
-        name="jumlah_barang" 
-        id="jumlah_barang" 
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 
-            @error('jumlah_barang') border-red-500 bg-red-50 @enderror
-            dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-        placeholder="Ketikkan jumlah_barang" 
-        required
-        value="{{ old('jumlah_barang')}}" 
-        oninput="calculateTotal()"
-    >
-    @error('jumlah_barang')
-        <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
-    @enderror
-</div>
+
 <div>
-    <label for="total_harga" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">total_harga</label>
+    <label for="harga_beli" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga Beli</label>
     <input 
-        type="text"
-        name="total_harga" 
-        id="total_harga" 
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 
-            @error('total_harga') border-red-500 bg-red-50 @enderror
-            dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+        type="number"
+        name="harga_beli" 
+        id="harga_beli" 
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+            @error('harga_beli') border-red-500 bg-red-50 @enderror
+            dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 w-full"
+         
         required
-        disabled
-        value="{{ old('total_harga')}}" 
+        value="{{ old('harga_beli') }}" 
+        readonly
     >
-    @error('total_harga')
+    @error('harga_beli')
         <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
     @enderror
 </div>
-<div class="sm:col-span-2">
-    <label for="tanggal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-        tanggal
+            <div class="w-full">
+                <label for="stok_masuk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Stok Masuk</label>
+                <input 
+                    type="number"
+                    name="stok_masuk" 
+                    id="stok_masuk" 
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 
+                        @error('stok_masuk') border-red-500 bg-red-50 @enderror
+                        dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="Ketikkan stok masuk" 
+                    required
+                    value="{{ old('stok_masuk')}}" 
+                    oninput="calculateTotal()"
+                >
+                @error('stok_masuk')
+                    <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                @enderror
+              </div>
+              <div>
+                <label for="jumlah_harga_beli" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah Harga Beli</label>
+                <input 
+                    type="number"
+                    name="jumlah_harga_beli" 
+                    id="jumlah_harga_beli" 
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 
+                        @error('jumlah_harga_beli') border-red-500 bg-red-50 @enderror
+                        dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    required
+                    readonly
+                    value="{{ old('jumlah_harga_beli')}}" 
+                >
+                @error('jumlah_harga_beli')
+                    <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                @enderror
+              </div>
+             
+              <div class="w-full">
+    <label for="tanggal_produksi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+        Tanggal Pembelian
     </label>
     <input 
         type="date" 
-        name="tanggal" 
-        id="tanggal" 
+        name="tanggal_produksi" 
+        id="tanggal_produksi" 
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 
-            @error('tanggal') border-red-500 bg-red-50 @enderror
+            @error('tanggal_produksi') border-red-500 bg-red-50 @enderror
             dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
         required
-        autofocus
-        disabled
-        value="{{ old('tanggal')}}"
+        readonly
+        value="{{ old('tanggal_produksi') }}"
     >
-    @error('tanggal')
+    @error('tanggal_produksi')
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+    @enderror
+</div>
+
+<div class="w-full">
+    <label for="tanggal_kedaluwarsa" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+        Tanggal Kedaluwarsa
+    </label>
+    <input 
+        type="date" 
+        name="tanggal_kedaluwarsa" 
+        id="tanggal_kedaluwarsa" 
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 
+            @error('tanggal_kedaluwarsa') border-red-500 bg-red-50 @enderror
+            dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+        required
+        value="{{ old('tanggal_kedaluwarsa') }}"
+        readonly
+    >
+    @error('tanggal_kedaluwarsa')
         <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
     @enderror
 </div>
@@ -129,23 +128,63 @@
   
 
 </section>
+<script>
+    $(document).ready(function() {
+        $('#product').select2({
+            placeholder: "Pilih Produk",
+            allowClear: true
+        });
 
+        $('#product').on('change', function() {
+            const selectedOption = $(this).find('option:selected');
+            const price = selectedOption.data('price');
+
+            // Update input harga dan stok akhir
+            $('#harga_beli').val(price ? price : '');
+        });
+    });
+  </script>
 <script>
 function calculateTotal() {
-    const harga = parseFloat(document.getElementById('harga').value) || 0;
-    const jumlahBarang = parseFloat(document.getElementById('jumlah_barang').value) || 0;
-    const totalHarga = harga * jumlahBarang;
-
-    document.getElementById('total_harga').value = totalHarga.toFixed(0);
+    const hargaBeli = document.getElementById('harga_beli').value;
+    const stokMasuk = document.getElementById('stok_masuk').value;
+    
+    // Hitung total harga_beli
+    const jumlahHargaBeli = hargaBeli * stokMasuk;
+    
+    // Set nilai ke input jumlah_harga_beli
+    document.getElementById('jumlah_harga_beli').value = jumlahHargaBeli;
 }
 </script>
 
+<!-- penambahan tanggal_kedaluwarsa -->
 <script>
     // Set the date input to today's date
     document.addEventListener('DOMContentLoaded', (event) => {
         const today = new Date().toISOString().split('T')[0];
-        document.getElementById('tanggal').value = today;
+        document.getElementById('tanggal_produksi').value = today;
     });
-</script>
 
+    function updateExpiryDate() {
+        const purchaseDate = new Date(document.getElementById('tanggal_produksi').value);
+        const productSelect = document.getElementById('product');
+        const selectedOption = productSelect.options[productSelect.selectedIndex];
+        
+        if (selectedOption) {
+            const masaBerlaku = parseInt(selectedOption.getAttribute('data-masa-berlaku'), 10); // Ambil masa berlaku
+            const expiryDate = new Date(purchaseDate);
+
+            // Tambahkan masa berlaku (dalam hari) ke tanggal pembelian
+            expiryDate.setDate(purchaseDate.getDate() + masaBerlaku);
+
+            // Format tanggal kedaluwarsa ke YYYY-MM-DD
+            const yyyy = expiryDate.getFullYear();
+            const mm = String(expiryDate.getMonth() + 1).padStart(2, '0'); // Bulan dimulai dari 0
+            const dd = String(expiryDate.getDate()).padStart(2, '0');
+            const formattedDate = `${yyyy}-${mm}-${dd}`;
+
+            document.getElementById('tanggal_kedaluwarsa').value = formattedDate;
+        }
+    }
+</script>
 </x-sidebar>

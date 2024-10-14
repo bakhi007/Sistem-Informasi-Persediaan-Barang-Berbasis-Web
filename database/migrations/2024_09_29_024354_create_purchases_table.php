@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->text('deskripsi');
-            $table->integer('harga');
-            $table->integer('jumlah_barang');
-            $table->integer('total_harga');
-            $table->date('tanggal');
+            $table->foreignId('product_id')->constrained(
+              table: 'products', indexName: 'purchases_product_id'
+          );
+            $table->integer('stok_masuk');
+            $table->integer('harga_beli');
+            $table->integer('jumlah_harga_beli');
+            $table->dateTime('tanggal_produksi');
+            $table->dateTime('tanggal_kedaluwarsa');
             $table->timestamps();
         });
     }

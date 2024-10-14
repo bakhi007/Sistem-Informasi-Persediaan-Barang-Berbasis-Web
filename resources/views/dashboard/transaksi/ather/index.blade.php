@@ -1,14 +1,14 @@
 <x-sidebar>
 <x-slot:title> {{ $title }} </x-slot:title>
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
-    <div class="mx-auto max-w-screen-xl px-4 lg:px-0">
+    <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
         <!-- Start coding here -->
         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
 
                 <!-- search -->
 <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-0 flex-shrink-0">
-    <form method="GET" action="{{ route('sale.index') }}" class="flex items-center">
+    <form method="GET" action="{{ route('ather.index') }}" class="flex items-center">
         <label for="search" class="sr-only">Search</label>
         <div class="relative w-full flex">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -26,12 +26,12 @@
 <!-- end of search -->
 
 <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-    <a href="/dashboard/transaksi/sale/create">
+    <a href="/dashboard/transaksi/ather/create">
         <button type="button" class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 mb-1 md:mb-0 w-full">
             <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
             </svg>
-            Input Penjualan
+            Input Barang Keluar
         </button>
     </a>
     <div class="flex items-center space-x-3 w-full md:w-auto">
@@ -55,35 +55,32 @@
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
             <th scope="col" class="px-4 py-3">Jenis Produk</th>
+            <th scope="col" class="px-4 py-3">Tipe Keluar</th>
             <th scope="col" class="px-4 py-3">Stok Keluar</th>
-            <th scope="col" class="px-4 py-3">Harga Jual</th>
-            <th scope="col" class="px-4 py-3">Jumlah Harga Jual</th>
-            <th scope="col" class="px-4 py-3">Diskon</th>
-            <th scope="col" class="px-4 py-3">Total Penjualan</th>
-            <th scope="col" class="px-4 py-3">Uang Terima</th>
-            <th scope="col" class="px-4 py-3">Kembalian</th>
-            <th scope="col" class="px-4 py-3">Tanggal Penjualan</th>
+            <th scope="col" class="px-4 py-3">Tanggal Keluar</th>
             <th scope="col" class="px-4 py-3">
                 <span class="sr-only">Actions</span>
             </th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($sales as $sale)
+        @foreach ($athers as $ather)
         <tr class="border-b dark:border-gray-700">
-            <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $sale->product->name }}</th>
-            <td class="px-4 py-3">{{ $sale->stok_keluar }}</td>
-            <td class="px-4 py-3">Rp.{{ number_format($sale->harga_jual, 0, ',', '.') }}</td>
-            <td class="px-4 py-3">Rp.{{ number_format($sale->jumlah_harga_jual, 0, ',', '.') }}</td>
-            <td class="px-4 py-3">Rp.{{ number_format($sale->diskon, 0, ',', '.') }}</td>
-            <td class="px-4 py-3">Rp.{{ number_format($sale->total_harga_jual, 0, ',', '.') }}</td>
-            <td class="px-4 py-3">Rp.{{ number_format($sale->uang_terima, 0, ',', '.') }}</td>
-            <td class="px-4 py-3">Rp.{{ number_format($sale->kembalian, 0, ',', '.') }}</td>
-            <td class="px-4 py-3">{{ \Carbon\Carbon::parse($sale->tanggal_penjualan)->locale('id')->translatedFormat('j F Y') }}</td>
+            <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {{ $ather->product->name ?? 'N/A' }}
+            </th>
+            <td class="px-4 py-3">{{ $ather->type->name ?? 'N/A' }}</td>
+            <td class="px-4 py-3">{{ $ather->stok_keluar }}</td>
+            <td class="px-4 py-3">{{ \Carbon\Carbon::parse($ather->tanggal_keluar)->locale('id')->translatedFormat('j F Y') }}</td>
+            <td class="px-4 py-3">
+                <!-- Actions can be added here -->
+            </td>
         </tr>
         @endforeach
     </tbody>
 </table>
+
+
 
             </div>
         </div>
@@ -167,7 +164,7 @@
 
 
 
-        {{ $sales->links() }}
+        {{ $athers->links() }}
     </div>
     </section>
 </x-sidebar>

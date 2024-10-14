@@ -17,18 +17,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // User::factory(1)->create();
 
         // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
+        //     'name' => 'Admin',
+        //     'username' => 'admin',
+        //     'password' => Hash::make('password'),
+        //     'remember_token' => Str::random(10)
         // ]);
 
-        $this->call([CategorySeeder::class, UserSeeder::class]);
-        Post::factory(100)->recycle([
-            Category::all(),
-            User::all()
-        ])->create();
+        $this->call([TypeSeeder::class, UserSeeder::class, ProductSeeder::class]);
+        // Post::factory(100)->recycle([
+        //     Category::all(),
+        //     User::all()
+        // ])->create();
 
         
         

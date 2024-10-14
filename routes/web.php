@@ -6,11 +6,15 @@ use App\Models\Category;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\AtherController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\StockController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardPostController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 // landing page
 // Route::get('/', function () {
@@ -37,15 +41,19 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/dashboard', function (){
-    return view('dashboard.index', ['title' => 'Dashboard']);
-})->middleware('auth');
+// Route::get('/dashboard', function (){
+//     return view('dashboard.index', ['title' => 'Dashboard']);
+// })->middleware('auth');
 
 Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
 Route::resource('/dashboard/transaksi/purchase', PurchaseController::class)->middleware('auth');
 Route::resource('/dashboard/transaksi/sale', SaleController::class)->middleware('auth');
-// Route::resource('/dashboard/transaksi/create', PurchaseController::class)->middleware('auth');
+Route::get('/api/products/{id}', [SaleController::class, 'getProduct']);
+Route::resource('/dashboard/transaksi/ather', AtherController::class)->middleware('auth');
+Route::resource('/dashboard/stok', StockController::class)->middleware('auth');
+Route::resource('/dashboard/', DashboardController::class)->middleware('auth');
+Route::post('/dashboard/transaksi/purchase',[PurchaseController::class, 'store'])->name('purchase.store');
 
 
 Route::get('/about', function () {
