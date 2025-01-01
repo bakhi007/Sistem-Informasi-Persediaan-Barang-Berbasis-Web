@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Sale;
 use App\Models\Product;
+use App\Models\Purchase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,8 +17,9 @@ class DashboardController extends Controller
     
     public function index()
     {
-        // Ambil tanggal hari ini
+        // Ambil tanggal hari ini dan besok
         $today = Carbon::today();
+        $tomorrow = Carbon::tomorrow();
     
         // Ambil data penjualan hari ini dan kelompokkan berdasarkan product_id
         $topSale = Sale::select('product_id', DB::raw('SUM(stok_keluar) as total_stok'))
@@ -28,7 +30,7 @@ class DashboardController extends Controller
             ->first(); // ambil yang teratas
     
         // Ambil semua data penjualan hari ini
-        $sales = Sale::with('product')->whereDate('tanggal_penjualan', $today)->get(); 
+        $sales = Sale::with('product')->whereDate('tanggal_penjualan', $today)->get();
     
         // Ambil produk terkait dengan topSale
         $product = $topSale ? $topSale->product : null;
@@ -36,8 +38,21 @@ class DashboardController extends Controller
         // Cek apakah ada produk dengan stok rendah
         $isStokRendah = Product::where('sisa_stok', '<=', 3)->exists();
     
-        return view('dashboard.index', compact('sales', 'topSale', 'product', 'isStokRendah'), ['title' => 'Dashboard']);
+        // Ambil penjualan terakhir berdasarkan waktu
+        $latestSale = Sale::with('product')->latest('created_at')->first();
+    
+        // Ambil produk yang kedaluwarsa besok
+        $productsExpiringTomorrow = Purchase::with('product')
+            ->whereDate('tanggal_kedaluwarsa', $tomorrow)
+            ->get();
+    
+        return view(
+            'dashboard.index',
+            compact('sales', 'topSale', 'product', 'isStokRendah', 'latestSale', 'productsExpiringTomorrow'),
+            ['title' => 'Dashboard']
+        );
     }
+    
     
     
 

@@ -20,10 +20,8 @@ return new class extends Migration
         $table->integer('harga_jual');
         $table->integer('jumlah_harga_jual');
         $table->integer('diskon');
-        $table->integer('total_harga_jual');
-        $table->integer('uang_terima');
-        $table->integer('kembalian');
         $table->dateTime('tanggal_penjualan');
+        $table->string('token');
         $table->timestamps();
     });
     }

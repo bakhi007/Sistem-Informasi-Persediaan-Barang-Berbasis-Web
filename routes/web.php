@@ -5,11 +5,16 @@ use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\NotaController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AtherController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\StockController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
@@ -41,17 +46,62 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
+Route::get('/forgot_password', [PasswordController::class, 'index'])->name('forgot_password')->middleware('guest');
+Route::post('/forgot_password', [PasswordController::class, 'changePassword'])->middleware('guest');
+
+// back up db
+Route::get('/backup-database', function () {
+  Artisan::call('backup:run --only-db');
+  return response()->json([
+      'status' => 'success',
+      'message' => 'Backup database berhasil dibuat!',
+  ]);
+})->name('backup.database')->middleware('auth');
+
+
 // Route::get('/dashboard', function (){
 //     return view('dashboard.index', ['title' => 'Dashboard']);
 // })->middleware('auth');
 
 Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
+
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
+
 Route::resource('/dashboard/transaksi/purchase', PurchaseController::class)->middleware('auth');
+
 Route::resource('/dashboard/transaksi/sale', SaleController::class)->middleware('auth');
+
+Route::post('/sale', [SaleController::class, 'store'])->middleware('auth');
+Route::post('/nota', [SaleController::class, 'store'])->middleware('auth');
+
+// Route::delete('/dashboard/transaksi/sale/{id}', [SaleController::class, 'destroy'])->name('sale.delete')->middleware('auth');
+Route::delete('/sale/delete/{id}', [SaleController::class, 'destroy'])->name('sale.delete');
+Route::get('/dashboard/transaksi/sale/update-total', [SaleController::class, 'updateTotal']);
+Route::get('/dashboard/report/sale/produk', [SaleController::class, 'show'])->name('sale.show');
+Route::get('/dashboard/transaksi/sale', [SaleController::class, 'index'])->name('sale.index');
+Route::get('/export-sold', [SaleController::class, 'exportPdf'])->middleware('auth');
+Route::get('/api/check-sales', [SaleController::class, 'checkSales']);
+
+
+
+// Route::delete('/dashboard/transaksi/sale/{id}', [SaleController::class, 'destroy'])->name('sales.destroy')->middleware('auth');
+
+
 Route::get('/api/products/{id}', [SaleController::class, 'getProduct']);
+
 Route::resource('/dashboard/transaksi/ather', AtherController::class)->middleware('auth');
+Route::get('/dashboard/report/sale/keluar', [AtherController::class, 'show'])->name('ather.show');
+
+Route::resource('/dashboard/report/sale', NotaController::class)->middleware('auth');
+Route::get('/dashboard/report/sale/token/{token}', [NotaController::class, 'showByToken'])->middleware('auth');
+Route::get('/dashboard/report/sale/nota', [NotaController::class, 'show'])->name('nota.show');
+Route::get('/export-nota', [NotaController::class, 'exportPdf'])->middleware('auth');
+
+
 Route::resource('/dashboard/stok', StockController::class)->middleware('auth');
+Route::get('/export-pdf', [StockController::class, 'exportPdf'])->middleware('auth');
+
+
 Route::resource('/dashboard/', DashboardController::class)->middleware('auth');
 Route::post('/dashboard/transaksi/purchase',[PurchaseController::class, 'store'])->name('purchase.store');
 
@@ -87,5 +137,7 @@ Route::get('/contact', function () {
     return view('contact', ['title' => 'Contact']);
 });
 
-Route::get('/photos', [PhotoController::class, 'search'])->name('photos.search');
-Route::get('/photo', [PhotoController::class, 'show']);
+Route::get('/dashboard/tentang', [AboutController::class, 'index'])->name('dashboard.tentang');
+
+// Auth Admin
+Route::resource('/dashboard/users', AdminUserController::class)->middleware('auth');

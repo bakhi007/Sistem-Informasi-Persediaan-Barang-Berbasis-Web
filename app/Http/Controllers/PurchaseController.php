@@ -14,51 +14,67 @@ class PurchaseController extends Controller
      */
     public function index(Request $request)
     {
-      // Ambil parameter sort
-      $sort = $request->get('sort');
-
-      // Ambil parameter pencarian
-      $search = $request->get('search');
-
-       // Mengambil data penjualan dengan filter
-       $purchasesQuery = Purchase::with('product');
-
-      // Jika ada parameter pencarian, tambahkan kondisi where untuk mencari berdasarkan nama produk
-      if ($search) {
-        $purchasesQuery->whereHas('product', function ($query) use ($search) {
-            $query->where('name', 'like', "%{$search}%");
-        });
+        // Ambil parameter sort
+        $sort = $request->get('sort');
+        
+        // Ambil parameter pencarian
+        $search = $request->get('search');
+        
+        // Ambil parameter rentang waktu
+        $dateRange = $request->get('date_range');
+        
+        // Mengambil data pembelian dengan filter
+        $purchasesQuery = Purchase::with('product');
+        
+        // Filter berdasarkan parameter pencarian
+        if ($search) {
+            $purchasesQuery->whereHas('product', function ($query) use ($search) {
+                $query->where('name', 'like', "%{$search}%");
+            });
+        }
+        
+        // Filter berdasarkan rentang waktu
+        if ($dateRange === 'today') {
+          $purchasesQuery->whereDate('tanggal_produksi', today());
+        } elseif ($dateRange === '7_days') {
+          $purchasesQuery->where('tanggal_produksi', '>=', now()->subDays(7));
+        } elseif ($dateRange === '1_month') {
+          $purchasesQuery->where('tanggal_produksi', '>=', now()->subMonths(1));
+        } elseif ($dateRange === '6_months') {
+          $purchasesQuery->where('tanggal_produksi', '>=', now()->subMonths(6));
+        } elseif ($dateRange === '1_year') {
+          $purchasesQuery->where('tanggal_produksi', '>=', now()->subYear());
+        }
+        
+        // Menentukan urutan berdasarkan filter sort
+        if ($sort === 'jumlah_harga_beli_desc') {
+            $purchasesQuery->orderBy('jumlah_harga_beli', 'desc');
+        } elseif ($sort === 'jumlah_harga_beli_asc') {
+            $purchasesQuery->orderBy('jumlah_harga_beli', 'asc');
+        } elseif ($sort === 'tanggal_kedaluwarsa_desc') {
+            $purchasesQuery->orderBy('tanggal_kedaluwarsa', 'desc');
+        } elseif ($sort === 'tanggal_kedaluwarsa_asc') {
+            $purchasesQuery->orderBy('tanggal_kedaluwarsa', 'asc');
+        } elseif ($sort === 'created_at_desc') {
+            $purchasesQuery->orderBy('created_at', 'desc');
+        } elseif ($sort === 'created_at_asc') {
+            $purchasesQuery->orderBy('created_at', 'asc');
+        } else {
+            $purchasesQuery->orderBy('created_at', 'desc');
+        }
+        
+        // Ambil data pembelian dengan pagination
+        $purchases = $purchasesQuery->paginate(5)->appends([
+            'sort' => $sort,
+            'search' => $search,
+            'date_range' => $dateRange,
+        ]);
+        
+        return view('dashboard.transaksi.purchase.index', compact('purchases'), [
+            'title' => 'Transaksi Pembelian',
+        ]);
     }
-
-    // Menentukan urutan berdasarkan filter
-    if ($sort === 'stok_masuk_desc') {
-      $purchasesQuery->orderBy('stok_masuk', 'desc');
-  } elseif ($sort === 'stok_masuk_asc') {
-      $purchasesQuery->orderBy('stok_masuk', 'asc');
-  } elseif ($sort === 'jumlah_harga_beli_desc') {
-      $purchasesQuery->orderBy('jumlah_harga_beli', 'desc');
-  } elseif ($sort === 'jumlah_harga_beli_asc') {
-      $purchasesQuery->orderBy('jumlah_harga_beli', 'asc');
-  } elseif ($sort === 'created_at_desc') {
-      $purchasesQuery->orderBy('created_at', 'desc');
-  } elseif ($sort === 'created_at_asc') {
-      $purchasesQuery->orderBy('created_at', 'asc');
-  }  elseif ($sort === 'tanggal_kedaluwarsa_desc') {
-    $purchasesQuery->orderBy('tanggal_kedaluwarsa', 'desc');
-} elseif ($sort === 'tanggal_kedaluwarsa_asc') {
-    $purchasesQuery->orderBy('tanggal_kedaluwarsa', 'asc');
-}
-  else {
-      $purchasesQuery->orderBy('created_at', 'desc');
-  }
-
-      // Ambil data penjualan dengan pagination
-      $purchases = $purchasesQuery->paginate(10)->appends(['sort' => $sort, 'search' => $search]);
-
-        return view('dashboard.transaksi.purchase.index', compact('purchases'), ['title' => 'Transaksi Pembelian']);
-        // return view('dashboard.transaksi.purchase.index', ['purchases' => Purchase::all()]);
-    }
-
+    
     /**
      * Show the form for creating a new resource.
      */
@@ -89,7 +105,7 @@ class PurchaseController extends Controller
         $product->sisa_stok += $purchase->stok_masuk; // Tambahkan stok
         $product->save();
         
-        return redirect('/dashboard/transaksi/purchase')->with(['success' => 'Post baru berhasil ditambahkan!']);
+        return redirect('/dashboard/transaksi/purchase')->with(['success' => 'Produk berhasil ditambahkan!']);
         // return $request;
     }
 

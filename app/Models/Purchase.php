@@ -22,9 +22,9 @@ class Purchase extends Model
         'product_id',
         'stok_masuk',
         'harga_beli',
-        'jumlah_harga_beli', // Pastikan 'author_id' termasuk di sini
-        'tanggal_produksi', // Pastikan 'author_id' termasuk di sini
-        'tanggal_kedaluwarsa', // Pastikan 'author_id' termasuk di sini
+        'jumlah_harga_beli',
+        'tanggal_produksi',
+        'tanggal_kedaluwarsa',
     ];
 
     // protected $with = ['author', 'category'];

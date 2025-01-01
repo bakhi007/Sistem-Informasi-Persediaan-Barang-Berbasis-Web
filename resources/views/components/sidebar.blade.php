@@ -8,6 +8,12 @@
   <title>{{ $title }}</title>
   <link rel="icon" href="{{url('/img/R.png')}}">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
   <!-- trix editor -->
@@ -95,293 +101,6 @@
           
         </div>
         <div class="flex items-center lg:order-2">
-          
-          <!-- Notifications -->
-          <button
-            type="button"
-            data-dropdown-toggle="notification-dropdown"
-            class="p-2 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-          >
-            <span class="sr-only">View notifications</span>
-            <!-- Bell icon -->
-            <svg
-              aria-hidden="true"
-              class="w-6 h-6"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"
-              ></path>
-            </svg>
-          </button>
-          <!-- Dropdown menu -->
-          <div
-            class="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:divide-gray-600 dark:bg-gray-700 rounded-xl"
-            id="notification-dropdown"
-          >
-            <div
-              class="block py-2 px-4 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-600 dark:text-gray-300"
-            >
-              Notifications
-            </div>
-            <div>
-              <a
-                href="#"
-                class="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600"
-              >
-                <div class="flex-shrink-0">
-                  <img
-                    class="w-11 h-11 rounded-full"
-                    src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
-                    alt="Bonnie Green avatar"
-                  />
-                  <div
-                    class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 rounded-full border border-white bg-primary-700 dark:border-gray-700"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="w-3 h-3 text-white"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z"
-                      ></path>
-                      <path
-                        d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"
-                      ></path>
-                    </svg>
-                  </div>
-                </div>
-                <div class="pl-3 w-full">
-                  <div
-                    class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400"
-                  >
-                    New message from
-                    <span class="font-semibold text-gray-900 dark:text-white"
-                      >Bonnie Green</span
-                    >: "Hey, what's up? All set for the presentation?"
-                  </div>
-                  <div
-                    class="text-xs font-medium text-primary-600 dark:text-primary-500"
-                  >
-                    a few moments ago
-                  </div>
-                </div>
-              </a>
-              <a
-                href="#"
-                class="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600"
-              >
-                <div class="flex-shrink-0">
-                  <img
-                    class="w-11 h-11 rounded-full"
-                    src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
-                    alt="Jese Leos avatar"
-                  />
-                  <div
-                    class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-gray-900 rounded-full border border-white dark:border-gray-700"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="w-3 h-3 text-white"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"
-                      ></path>
-                    </svg>
-                  </div>
-                </div>
-                <div class="pl-3 w-full">
-                  <div
-                    class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400"
-                  >
-                    <span class="font-semibold text-gray-900 dark:text-white"
-                      >Jese leos</span
-                    >
-                    and
-                    <span class="font-medium text-gray-900 dark:text-white"
-                      >5 others</span
-                    >
-                    started following you.
-                  </div>
-                  <div
-                    class="text-xs font-medium text-primary-600 dark:text-primary-500"
-                  >
-                    10 minutes ago
-                  </div>
-                </div>
-              </a>
-              <a
-                href="#"
-                class="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600"
-              >
-                <div class="flex-shrink-0">
-                  <img
-                    class="w-11 h-11 rounded-full"
-                    src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/joseph-mcfall.png"
-                    alt="Joseph McFall avatar"
-                  />
-                  <div
-                    class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-red-600 rounded-full border border-white dark:border-gray-700"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="w-3 h-3 text-white"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                  </div>
-                </div>
-                <div class="pl-3 w-full">
-                  <div
-                    class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400"
-                  >
-                    <span class="font-semibold text-gray-900 dark:text-white"
-                      >Joseph Mcfall</span
-                    >
-                    and
-                    <span class="font-medium text-gray-900 dark:text-white"
-                      >141 others</span
-                    >
-                    love your story. See it and view more stories.
-                  </div>
-                  <div
-                    class="text-xs font-medium text-primary-600 dark:text-primary-500"
-                  >
-                    44 minutes ago
-                  </div>
-                </div>
-              </a>
-              <a
-                href="#"
-                class="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600"
-              >
-                <div class="flex-shrink-0">
-                  <img
-                    class="w-11 h-11 rounded-full"
-                    src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/roberta-casas.png"
-                    alt="Roberta Casas image"
-                  />
-                  <div
-                    class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-green-400 rounded-full border border-white dark:border-gray-700"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="w-3 h-3 text-white"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                  </div>
-                </div>
-                <div class="pl-3 w-full">
-                  <div
-                    class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400"
-                  >
-                    <span class="font-semibold text-gray-900 dark:text-white"
-                      >Leslie Livingston</span
-                    >
-                    mentioned you in a comment:
-                    <span
-                      class="font-medium text-primary-600 dark:text-primary-500"
-                      >@bonnie.green</span
-                    >
-                    what do you say?
-                  </div>
-                  <div
-                    class="text-xs font-medium text-primary-600 dark:text-primary-500"
-                  >
-                    1 hour ago
-                  </div>
-                </div>
-              </a>
-              <a
-                href="#"
-                class="flex py-3 px-4 hover:bg-gray-100 dark:hover:bg-gray-600"
-              >
-                <div class="flex-shrink-0">
-                  <img
-                    class="w-11 h-11 rounded-full"
-                    src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/robert-brown.png"
-                    alt="Robert image"
-                  />
-                  <div
-                    class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 bg-purple-500 rounded-full border border-white dark:border-gray-700"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="w-3 h-3 text-white"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"
-                      ></path>
-                    </svg>
-                  </div>
-                </div>
-                <div class="pl-3 w-full">
-                  <div
-                    class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400"
-                  >
-                    <span class="font-semibold text-gray-900 dark:text-white"
-                      >Robert Brown</span
-                    >
-                    posted a new video: Glassmorphism - learn how to implement
-                    the new design trend.
-                  </div>
-                  <div
-                    class="text-xs font-medium text-primary-600 dark:text-primary-500"
-                  >
-                    3 hours ago
-                  </div>
-                </div>
-              </a>
-            </div>
-            <a
-              href="#"
-              class="block py-2 text-md font-medium text-center text-gray-900 bg-gray-50 hover:bg-gray-100 dark:bg-gray-600 dark:text-white dark:hover:underline"
-            >
-              <div class="inline-flex items-center">
-                <svg
-                  aria-hidden="true"
-                  class="mr-2 w-4 h-4 text-gray-500 dark:text-gray-400"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                  <path
-                    fill-rule="evenodd"
-                    d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-                View all
-              </div>
-            </a>
-          </div>
           <!-- Apps -->
           <button
             type="button"
@@ -611,140 +330,40 @@
               alt="user photo"
             />
           </button>
-          <!-- Dropdown menu -->
-          <div
-            class="hidden z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
-            id="dropdown"
-          >
-            <div class="py-3 px-4">
-              <span
-                class="block text-sm font-semibold text-gray-900 dark:text-white"
-                >{{ auth()->user()->name }}</span
-              >
-              
-            </div>
-            <ul
-              class="py-1 text-gray-700 dark:text-gray-300"
-              aria-labelledby="dropdown"
-            >
-              <li>
-                <a
-                  href="#"
-                  class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
-                  >My profile</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
-                  >Account settings</a
-                >
-              </li>
-            </ul>
-            <ul
-              class="py-1 text-gray-700 dark:text-gray-300"
-              aria-labelledby="dropdown"
-            >
-              <li>
-                <a
-                  href="#"
-                  class="flex items-center py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  ><svg
-                    class="mr-2 w-5 h-5 text-gray-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                  My likes</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="flex items-center py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  ><svg
-                    class="mr-2 w-5 h-5 text-gray-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"
-                    ></path>
-                  </svg>
-                  Collections</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="flex justify-between items-center py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                >
-                  <span class="flex items-center">
-                    <svg
-                      aria-hidden="true"
-                      class="mr-2 w-5 h-5 text-primary-600 dark:text-primary-500"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                    Pro version
-                  </span>
-                  <svg
-                    aria-hidden="true"
-                    class="w-5 h-5 text-gray-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </a>
-              </li>
-            </ul>
-            <ul
-              class="py-1 text-gray-700 dark:text-gray-300"
-              aria-labelledby="dropdown"
-            >
-              <li>
-                
-                <form action="/logout" method="post">
-                  @csrf
-                  <button type="submit" class="flex items-center px-4 py-2 text-sm text-gray-700">
-                  <i class="mr-2 w-5 h-5 text-gray-400">
-                    
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/></svg>
-                  </i>  
-                  
-                    Logout
-                  </button>
-                </form>
-              </li>
-            </ul>
-          </div>
+         <!-- Dropdown menu -->
+<div class="hidden z-50 my-4 w-44 text-base list-none bg-white rounded-lg divide-y divide-gray-200 shadow-lg dark:bg-gray-700 dark:divide-gray-600 rounded-xl" id="dropdown">
+  <div class="py-4 px-4 bg-gray-50 dark:bg-gray-800 rounded-t-lg">
+    <span class="block text-sm font-semibold text-gray-900 dark:text-white">
+      {{ auth()->user()->username }}
+    </span>
+    <span class="block text-sm font-semibold text-gray-900 dark:text-white">
+      {{ auth()->user()->role }}
+    </span>
+  </div>
+  <ul class="hover:bg-gray-50 py-2 text-sm text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
+    <li>
+      <form action="/logout" method="post">
+        @csrf
+        <button 
+          type="submit" 
+          class="flex items-center w-full px-4 py-2 text-sm font-medium text-left text-gray-700 dark:hover:bg-gray-600 dark:text-gray-300 dark:hover:text-white transition-all duration-200">
+          <i class="mr-3 text-gray-400 dark:text-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 512 512">
+              <path fill="currentColor" d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/>
+            </svg>
+          </i>
+          Logout
+        </button>
+      </form>
+    </li>
+  </ul>
+</div>
+<!-- End of dropdown menu -->
         </div>
       </div>
     </nav>
 
     <!-- Sidebar -->
-
     <aside
       class="fixed top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
       aria-label="Sidenav"
@@ -757,7 +376,7 @@
             <a
                 href="/dashboard"
                 class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white 
-                    {{ request()->is('dashboard') ? 'bg-gray-100 dark:bg-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }} 
+                    {{ request()->is('dashboard') ? 'bg-gray-100 dark:bg-gray-700 border-r-4 border-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }} 
                     group"
             >
                 <svg
@@ -821,7 +440,7 @@
                   <a
                       href="/dashboard/transaksi/purchase"
                       class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group 
-                          {{ request()->is('dashboard/transaksi/purchase') ? 'bg-gray-100 dark:bg-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }}"
+                          {{ request()->is('dashboard/transaksi/purchase') ? 'bg-gray-100 dark:bg-gray-700 border-r-4 border-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }}"
                   >
                       Pembelian
                   </a>
@@ -830,7 +449,7 @@
                 <a
                   href="/dashboard/transaksi/sale"
                   class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group 
-                          {{ request()->is('dashboard/transaksi/sale') ? 'bg-gray-100 dark:bg-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }}"
+                          {{ request()->is('dashboard/transaksi/sale') ? 'bg-gray-100 dark:bg-gray-700 border-r-4 border-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }}"
                   >Penjualan / Kasir</a
                 >
               </li>
@@ -838,7 +457,7 @@
                 <a
                   href="/dashboard/transaksi/ather"
                   class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group 
-                          {{ request()->is('dashboard/transaksi/ather') ? 'bg-gray-100 dark:bg-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }}"
+                          {{ request()->is('dashboard/transaksi/ather') ? 'bg-gray-100 dark:bg-gray-700 border-r-4 border-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }}"
                   >Lain-Lain</a
                 >
               </li>
@@ -849,7 +468,7 @@
             <a
               href="/dashboard/stok"
               class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white 
-                    {{ request()->is('dashboard/stok') ? 'bg-gray-100 dark:bg-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }} 
+                    {{ request()->is('dashboard/stok') ? 'bg-gray-100 dark:bg-gray-700 border-r-4 border-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }} 
                     group"
             >
               <svg 
@@ -864,16 +483,90 @@
               </svg>
 
 
-              <span class="flex-1 ml-3 whitespace-nowrap">Stok Roti</span>
+              <span class="flex-1 ml-3 whitespace-nowrap">Stok Barang</span>
+              
+            </a>
+          </li>
+
+          <li>
+              <button
+                  id="dropdown-button-laporan"
+                  type="button"
+                  class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  aria-controls="dropdown-laporan"
+                  data-collapse-toggle="dropdown-laporan"
+              >
+                  <svg aria-hidden="true"
+                      class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 384 512">
+                      <path d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 288c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128z"/>
+                  </svg>
+                  <span class="flex-1 ml-3 text-left whitespace-nowrap">Laporan</span>
+                  <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                  </svg>
+              </button>
+              <ul id="dropdown-laporan" class="hidden py-2 space-y-2">
+              <li>
+                  <a
+                    href="/dashboard/stok/show"
+                    class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group 
+                            {{ request()->is('dashboard/stok/show') ? 'bg-gray-100 dark:bg-gray-700 border-r-4 border-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }}"
+                    >Stok Barang</a
+                  >
+                </li>
+                <li>
+                    <a
+                        href="/dashboard/report/sale/nota"
+                        class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group 
+                            {{ request()->is('dashboard/report/sale/nota') ? 'bg-gray-100 dark:bg-gray-700 border-r-4 border-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }}"
+                    >
+                        Nota Penjualan
+                    </a>
+                </li>
+                <li>
+                  <a
+                    href="/dashboard/report/sale/produk"
+                    class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group 
+                            {{ request()->is('dashboard/report/sale/produk') ? 'bg-gray-100 dark:bg-gray-700 border-r-4 border-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }}"
+                    >Produk Terjual</a
+                  >
+                </li>
+                
+                <li>
+                  <a
+                    href="/dashboard/report/sale/keluar"
+                    class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group 
+                            {{ request()->is('dashboard/report/sale/keluar') ? 'bg-gray-100 dark:bg-gray-700 border-r-4 border-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }}"
+                    >Barang Keluar</a
+                  >
+                </li>
+              </ul>
+          </li>
+
+          <li>
+            <a
+              href="/dashboard/tentang/"
+              class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white 
+                    {{ request()->is('dashboard/tentang') ? 'bg-gray-100 dark:bg-gray-700 border-r-4 border-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }} 
+                    group"
+            >
+              
+              <svg class="flex-shrink-0 w-6 h-6 
+                        {{ request()->is('dashboard/tentang') ? 'text-gray-900 dark:text-white' : 'text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white' }} 
+                        transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 512 512"><path fill-rule="evenodd" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336l24 0 0-64-24 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l48 0c13.3 0 24 10.7 24 24l0 88 8 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-80 0c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" clip-rule="evenodd"/></svg>
+
+
+              <span class="flex-1 ml-3 whitespace-nowrap">Tentang</span>
               
             </a>
           </li>
           
         </ul>
+
         <ul
           class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700"
         >
-          <li>
+          <!-- <li>
             <a
               href="/dashboard/posts"
               class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
@@ -913,31 +606,29 @@
               </svg>
               <span class="ml-3">Components</span>
             </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
-            >
-              <svg
-                aria-hidden="true"
-                class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span class="ml-3">Help</span>
-            </a>
-          </li>
+          </li> -->
+          <!-- @can('is-admin')
+<li>
+    <a
+        href="/dashboard/users/"
+        class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white 
+              {{ request()->is('dashboard/users*') ? 'bg-gray-100 dark:bg-gray-700 border-r-4 border-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }} 
+              group"
+    >
+        
+        <svg aria-hidden="true"
+            class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192l42.7 0c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0L21.3 320C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7l42.7 0C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3l-213.3 0zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352l117.3 0C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7l-330.7 0c-14.7 0-26.7-11.9-26.7-26.7z"/></svg>
+        <span class="ml-3">Karyawan</span>
+    </a>
+</li>
+@endcan -->
+
         </ul>
+
       </div>
-      <div
+      <!-- <div
         class="hidden absolute bottom-0 left-0 justify-center p-4 space-x-4 w-full lg:flex bg-white dark:bg-gray-800 z-20"
       >
         <a
@@ -1182,71 +873,82 @@
             </li>
           </ul>
         </div>
-      </div>
+      </div> -->
     </aside>
-
-    <!-- <main class="p-4 md:ml-64 h-auto pt-20">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-        <div
-          class="border-2 border-dashed border-gray-300 rounded-lg dark:border-gray-600 h-32 md:h-64"
-        ></div>
-        <div
-          class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-32 md:h-64"
-        ></div>
-        <div
-          class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-32 md:h-64"
-        ></div>
-        <div
-          class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-32 md:h-64"
-        ></div>
-      </div>
-      <div
-        class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-96 mb-4"
-      ></div>
-      <div class="grid grid-cols-2 gap-4">
-        <div
-          class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
-        ></div>
-        <div
-          class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
-        ></div>
-        
-      </div>
-    </main> -->
-    <main class="p-4 md:ml-64 h-auto pt-20">
+    <main class="bg-gray-50 p-4 md:ml-64 h-auto pt-20">
       {{ $slot }}
     </main>
   </div>
 
   <!-- dropdown menu transaksi -->
-  <script>
+<script>
     document.addEventListener("DOMContentLoaded", function() {
-      const dropdownButton = document.getElementById('dropdown-button');
-      const dropdownMenu = document.getElementById('dropdown-sales');
+        const dropdownButton = document.getElementById('dropdown-button');
+        const dropdownMenu = document.getElementById('dropdown-sales');
 
-      // Check the current URL
-      const currentPath = window.location.pathname;
-      if (currentPath === '/dashboard/transaksi/purchase' || currentPath === '/dashboard/transaksi/sale' || currentPath === '/dashboard/transaksi/ather') {
-        dropdownMenu.classList.remove('hidden'); // Show the dropdown
-      }
+        // Check the current URL for transaksi dropdown
+        const currentPath = window.location.pathname;
+        if (currentPath === '/dashboard/transaksi/purchase' || currentPath === '/dashboard/transaksi/sale' || currentPath === '/dashboard/transaksi/ather') {
+            dropdownMenu.classList.remove('hidden'); // Show the dropdown
+        }
 
-      // Optional: Toggle the dropdown on button click
-      dropdownButton.addEventListener('click', function() {
-        dropdownMenu.classList.toggle('hidden');
-      });
-    });
-  </script>
-
-
-  <!-- Tambahkan script untuk menginisialisasi Select2 -->
-<!-- <script>
-    $(document).ready(function() {
-        $('#barang_keluar').select2({
-            placeholder: "Pilih Barang Keluar",
-            allowClear: true
+        // Optional: Toggle the dropdown on button click
+        dropdownButton.addEventListener('click', function() {
+            dropdownMenu.classList.toggle('hidden');
         });
+        
+        // Additional functionality for laporan dropdown
+        const dropdownButtonLaporan = document.getElementById('dropdown-button-laporan');
+        const dropdownMenuLaporan = document.getElementById('dropdown-laporan');
+        // const dropdownButtonPenjualan = document.getElementById('dropdown-button-penjualan');
+        // const dropdownMenuPenjualan = document.getElementById('dropdown-penjualan');
+
+        // Check the current URL for laporan dropdown
+        if (currentPath === '/dashboard/report/sale/nota' || currentPath === '/dashboard/report/sale/produk' || currentPath === '/dashboard/stok/show' || currentPath === '/dashboard/report/sale/keluar') {
+            dropdownMenuLaporan.classList.remove('hidden'); // Show the dropdown
+        }
+
+        // Optional: Toggle the dropdown on button click
+        dropdownButtonLaporan.addEventListener('click', function() {
+            dropdownMenuLaporan.classList.toggle('hidden');
+        });
+        // if (currentPath === '/dashboard/stok/show') {
+        //     dropdownMenuLaporan.classList.remove('hidden'); // Show Laporan dropdown
+        //     dropdownButtonLaporan.classList.add('bg-gray-100 dark:bg-gray-700'); // Mark Laporan as active
+        // }
+
+        // // Check the current URL for transaksi dropdown
+        // if (currentPath === '/dashboard/report/sale/nota' || currentPath === '/dashboard/report/sale/product') {
+        //     dropdownMenuLaporan.classList.remove('hidden'); // Show the dropdown
+        //     dropdownMenuPenjualan.classList.remove('hidden'); // Show the dropdown
+        // }
+
+        // // Show Penjualan dropdown if the current path matches Nota Penjualan or Produk Terjual
+        // if (currentPath === '/dashboard/report/sale/nota' || currentPath === '/dashboard/report/sale/produk') {
+        //     dropdownMenuPenjualan.classList.remove('hidden'); // Show Penjualan dropdown
+        //     dropdownButtonPenjualan.classList.add('bg-gray-100 dark:bg-gray-700'); // Mark Penjualan as active
+        //     dropdownMenuLaporan.classList.remove('hidden'); // Ensure Laporan dropdown is also shown
+        //     dropdownButtonLaporan.classList.add('bg-gray-100 dark:bg-gray-700'); // Mark Laporan as active
+
+        //     // Menandai menu yang sedang aktif
+        //     const notaPenjualanLink = document.getElementById('nota-penjualan');
+        //     if (currentPath === '/dashboard/report/sale/nota') {
+        //         notaPenjualanLink.classList.add('bg-gray-200 dark:bg-gray-600'); // Tandai sebagai aktif
+        //     }
+        // }
+
+        // // Optional: Toggle the laporan dropdown on button click
+        // dropdownButtonLaporan.addEventListener('click', function() {
+        //     dropdownMenuLaporan.classList.toggle('hidden');
+        // });
+
+        // dropdownButtonPenjualan.addEventListener('click', function() {
+        //     dropdownMenuPenjualan.classList.toggle('hidden');
+        // });
     });
-</script> -->
+</script>
+
+
 
 </body>
 </html>

@@ -1,7 +1,16 @@
 <x-sidebar>
 <x-slot:title> {{ $title }} </x-slot:title>
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
-    <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
+@if (session()->has('success'))
+      <!-- Success -->
+      <div class="mb-4 flex justify-between text-green-200 shadow-inner rounded p-3 bg-green-600">
+        <p class="self-center">
+          <strong>{{ session('success')}} </strong>
+        </p>
+        <strong class="text-xl align-center cursor-pointer alert-del">&times;</strong>
+      </div>
+    @endif
+    <div class="mx-auto max-w-screen-xl px-4 lg:px-0">
         <!-- Start coding here -->
         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
@@ -17,11 +26,14 @@
                 </svg>
             </div>
             <input type="search" id="search" name="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" style="width: 300px;" placeholder="Cari barang disini..">
-            <button type="submit" class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-r-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+            <button type="submit" class="mr-2 flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-r-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
                 Cari
             </button>
         </div>
     </form>
+    <button type="button" onclick="window.location='{{ route('ather.index') }}'" class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+    Reset
+</button>
 </div>
 <!-- end of search -->
 
@@ -55,8 +67,9 @@
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
             <th scope="col" class="px-4 py-3">Jenis Produk</th>
-            <th scope="col" class="px-4 py-3">Tipe Keluar</th>
+            <th scope="col" class="px-4 py-3">Harga Jual</th>
             <th scope="col" class="px-4 py-3">Stok Keluar</th>
+            <th scope="col" class="px-4 py-3">Tipe Keluar</th>
             <th scope="col" class="px-4 py-3">Tanggal Keluar</th>
             <th scope="col" class="px-4 py-3">
                 <span class="sr-only">Actions</span>
@@ -69,8 +82,9 @@
             <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 {{ $ather->product->name ?? 'N/A' }}
             </th>
-            <td class="px-4 py-3">{{ $ather->type->name ?? 'N/A' }}</td>
+            <td class="px-4 py-3">Rp.{{ number_format($ather->harga_jual, 0, ',', '.') }}</td>
             <td class="px-4 py-3">{{ $ather->stok_keluar }}</td>
+            <td class="px-4 py-3">{{ $ather->type->name ?? 'N/A' }}</td>
             <td class="px-4 py-3">{{ \Carbon\Carbon::parse($ather->tanggal_keluar)->locale('id')->translatedFormat('j F Y') }}</td>
             <td class="px-4 py-3">
                 <!-- Actions can be added here -->
@@ -85,75 +99,55 @@
             </div>
         </div>
 
-        <!-- filter -->
-        <div id="filterDropdown" class="z-10 hidden w-48 p-3 bg-white rounded-lg shadow dark:bg-gray-700 border border-gray-300 dark:border-gray-600">
+       <!-- filter -->
+<div id="filterDropdown" class="z-10 hidden w-48 p-3 bg-white rounded-lg shadow dark:bg-gray-700 border border-gray-300 dark:border-gray-600">
     <h6 class="mb-3 text-sm font-medium text-gray-900 dark:text-white">Urutkan berdasarkan</h6>
+
     <ul class="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
         <li>
-            <span class="block px-2 py-1 font-bold text-gray-900 dark:text-gray-100">Produk Terjual</span> <!-- Indikator tidak bisa diklik -->
+            <span class="block px-2 py-1 font-bold text-gray-900 dark:text-gray-100">Rentang Waktu</span> <!-- Indikator tidak bisa diklik -->
         </li>
         <li>
-            <a href="?sort=stok_keluar_desc" class="block px-2 py-1 text-gray-900 dark:text-gray-100 
-                {{ request('sort') === 'stok_keluar_desc' ? 'bg-gray-200 dark:bg-gray-600' : '' }}">
-                Tertinggi
-                @if(request('sort') === 'stok_keluar_desc') 
+            <a href="?time_range=today" class="block px-2 py-1 text-gray-900 dark:text-gray-100 
+                {{ request('time_range') === 'today' ? 'bg-gray-200 dark:bg-gray-600' : '' }}">
+                Hari Ini
+                @if(request('time_range') === 'today') 
                     <span class="text-green-500">✔️</span>
                 @endif
             </a>
         </li>
         <li>
-            <a href="?sort=stok_keluar_asc" class="block px-2 py-1 text-gray-900 dark:text-gray-100 
-                {{ request('sort') === 'stok_keluar_asc' ? 'bg-gray-200 dark:bg-gray-600' : '' }}">
-                Terendah
-                @if(request('sort') === 'stok_keluar_asc') 
-                    <span class="text-green-500">✔️</span>
-                @endif
-            </a>
-        </li>
-    </ul>
-
-    <ul class="space-y-2 text-sm mt-4">
-        <li>
-            <span class="block px-2 py-1 font-bold text-gray-900 dark:text-gray-100">Pendapatan</span> <!-- Indikator tidak bisa diklik -->
-        </li>
-        <li>
-            <a href="?sort=total_harga_jual_desc" class="block px-2 py-1 text-gray-900 dark:text-gray-100 
-                {{ request('sort') === 'total_harga_jual_desc' ? 'bg-gray-200 dark:bg-gray-600' : '' }}">
-                Tertinggi
-                @if(request('sort') === 'total_harga_jual_desc') 
+            <a href="?time_range=last_7_days" class="block px-2 py-1 text-gray-900 dark:text-gray-100 
+                {{ request('time_range') === 'last_7_days' ? 'bg-gray-200 dark:bg-gray-600' : '' }}">
+                7 Hari Terakhir
+                @if(request('time_range') === 'last_7_days') 
                     <span class="text-green-500">✔️</span>
                 @endif
             </a>
         </li>
         <li>
-            <a href="?sort=total_harga_jual_asc" class="block px-2 py-1 text-gray-900 dark:text-gray-100 
-                {{ request('sort') === 'total_harga_jual_asc' ? 'bg-gray-200 dark:bg-gray-600' : '' }}">
-                Terendah
-                @if(request('sort') === 'total_harga_jual_asc') 
-                    <span class="text-green-500">✔️</span>
-                @endif
-            </a>
-        </li>
-    </ul>
-
-    <ul class="space-y-2 text-sm mt-4">
-        <li>
-            <span class="block px-2 py-1 font-bold text-gray-900 dark:text-gray-100">Tanggal</span> <!-- Indikator tidak bisa diklik -->
-        </li>
-        <li>
-            <a href="?sort=created_at_desc" class="block px-2 py-1 text-gray-900 dark:text-gray-100 
-                {{ request('sort') === 'created_at_desc' ? 'bg-gray-200 dark:bg-gray-600' : '' }}">
-                Terbaru
-                @if(request('sort') === 'created_at_desc') 
+            <a href="?time_range=last_month" class="block px-2 py-1 text-gray-900 dark:text-gray-100 
+                {{ request('time_range') === 'last_month' ? 'bg-gray-200 dark:bg-gray-600' : '' }}">
+                1 Bulan Terakhir
+                @if(request('time_range') === 'last_month') 
                     <span class="text-green-500">✔️</span>
                 @endif
             </a>
         </li>
         <li>
-            <a href="?sort=created_at_asc" class="block px-2 py-1 text-gray-900 dark:text-gray-100 
-                {{ request('sort') === 'created_at_asc' ? 'bg-gray-200 dark:bg-gray-600' : '' }}">
-                Terlama
-                @if(request('sort') === 'created_at_asc') 
+            <a href="?time_range=last_6_months" class="block px-2 py-1 text-gray-900 dark:text-gray-100 
+                {{ request('time_range') === 'last_6_months' ? 'bg-gray-200 dark:bg-gray-600' : '' }}">
+                6 Bulan Terakhir
+                @if(request('time_range') === 'last_6_months') 
+                    <span class="text-green-500">✔️</span>
+                @endif
+            </a>
+        </li>
+        <li>
+            <a href="?time_range=last_year" class="block px-2 py-1 text-gray-900 dark:text-gray-100 
+                {{ request('time_range') === 'last_year' ? 'bg-gray-200 dark:bg-gray-600' : '' }}">
+                1 Tahun Terakhir
+                @if(request('time_range') === 'last_year') 
                     <span class="text-green-500">✔️</span>
                 @endif
             </a>
@@ -167,4 +161,13 @@
         {{ $athers->links() }}
     </div>
     </section>
+    <script> // Script For Close alert
+
+  var alert_del = document.querySelectorAll('.alert-del');
+  alert_del.forEach((x) =>
+  x.addEventListener('click', function () {
+      x.parentElement.classList.add('hidden');
+  })
+  );
+  </script>
 </x-sidebar>

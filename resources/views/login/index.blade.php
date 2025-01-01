@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Login</title>
-    <link rel="icon" href="{{url('/img/ahsan-logo.png')}}">
+    <link rel="icon" href="{{url('/img/R.png')}}">
 </head>
 <body>
-<section class="bg-gray-50 min-h-screen flex items-center justify-center">
+<div class="flex flex-col min-h-screen">
+<section class="flex items-center justify-center flex-grow">
   <!-- login container -->
-  <div class="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
+  <div class="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center" style="max-height: 80vh;">
     <!-- form -->
-    <div class="md:w-1/2 px-8 md:px-16">
+    <div class="md:w-1/2 px-4 md:px-8">
 
       @if (session()->has('success'))
         <!-- Success -->
@@ -35,10 +36,10 @@
         </div>
       @endif
 
-        <a href="/">
+       
           
       <h2 class="font-bold text-2xl text-[#002D74]">Selamat Datang</h2>
-        </a>
+       
       <p class="text-sm mt-4 text-[#002D74]">Silakan isi kolom di bawah untuk login</p>
 
       <form action="/login" method="post" class="mb-4 flex flex-col gap-4">
@@ -54,16 +55,18 @@
 
         <button class="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">Login</button>
       </form>
-      <!-- <small>Belum punya akun? <a href="/register" class="hover:underline text-blue-500">Registrasi sekarang</a></small> -->
+      <small>Lupa password? <a href="/forgot_password" class="hover:underline text-blue-500">Klik disini</a></small>
 
     </div>
 
     <!-- image -->
     <div class="md:block hidden w-1/2">
-      <img class="rounded-2xl" src="img/login.avif">
+      <img class="rounded-2xl" src="img/login.avif" style="max-height: 70vh;">
     </div>
   </div>
 </section>
+<x-footer></x-footer>
+</div>
 <script> // Script For Close alert
 
 var alert_del = document.querySelectorAll('.alert-del');

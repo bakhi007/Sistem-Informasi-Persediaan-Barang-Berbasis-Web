@@ -24,9 +24,7 @@ class Sale extends Model
       'harga_jual',
       'jumlah_harga_jual', // Pastikan 'author_id' termasuk di sini
       'diskon', // Pastikan 'author_id' termasuk di sini
-      'total_harga_jual', // Pastikan 'author_id' termasuk di sini
-      'uang_terima', // Pastikan 'author_id' termasuk di sini
-      'kembalian', // Pastikan 'author_id' termasuk di sini
+      'token', // Pastikan 'author_id' termasuk di sini
       'tanggal_penjualan', // Pastikan 'author_id' termasuk di sini
   ];
 

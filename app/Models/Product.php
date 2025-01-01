@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-
 class Product extends Model
 {
     use HasFactory;
@@ -15,14 +14,14 @@ class Product extends Model
     
     public function purchases(): HasMany
     {
-        return $this->hasMany(Purchase::class); //category_id sebagai foreign key di table posts
+        return $this->hasMany(Purchase::class); //product_id sebagai foreign key di table purchases
     }
     public function sales(): HasMany
     {
-        return $this->hasMany(Sale::class); //category_id sebagai foreign key di table posts
+        return $this->hasMany(Sale::class); //product_id sebagai foreign key di table sales
     }
     public function athers(): HasMany
     {
-        return $this->hasMany(Ather::class); //category_id sebagai foreign key di table posts
+        return $this->hasMany(Ather::class); //product_id sebagai foreign key di table athers
     }
 }

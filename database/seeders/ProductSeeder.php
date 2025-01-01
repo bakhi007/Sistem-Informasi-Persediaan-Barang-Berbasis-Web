@@ -1310,383 +1310,743 @@ class ProductSeeder extends Seeder
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Cimoring',
+        'harga_beli' => '8500',
+        'harga_jual' => '11000',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Bola Choco',
+        'harga_beli' => '15000',
+        'harga_jual' => '19500',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Sale Pisang',
+        'harga_beli' => '7000',
+        'harga_jual' => '9000',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Kue Sus Coklat',
+        'harga_beli' => '13500',
+        'harga_jual' => '17500',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Keripik Ubi Ungu',
+        'harga_beli' => '7000',
+        'harga_jual' => '9000',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Keripik Singkong Balado',
+        'harga_beli' => '9000',
+        'harga_jual' => '11500',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Keripik Belut',
+        'harga_beli' => '20000',
+        'harga_jual' => '26000',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Usus',
+        'harga_beli' => '7500',
+        'harga_jual' => '9500',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Teh Rosela',
+        'harga_beli' => '10000',
+        'harga_jual' => '13500',
+        'sisa_stok' => '3',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Kacang Pilus Kroma',
+        'harga_beli' => '7000',
+        'harga_jual' => '9000',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Keripik Nangka',
+        'harga_beli' => '27500',
+        'harga_jual' => '36000',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Robeena Sukamilk',
+        'harga_beli' => '34000',
+        'harga_jual' => '45000',
+        'sisa_stok' => '89',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Keripik Pisang Lancar Asih',
+        'harga_beli' => '15500',
+        'harga_jual' => '20000',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Soto Rawit Stick',
+        'harga_beli' => '6000',
+        'harga_jual' => '8000',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Bir Jawa',
+        'harga_beli' => '10000',
+        'harga_jual' => '13500',
+        'sisa_stok' => '4',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Wedang Uwuh',
+        'harga_beli' => '10000',
+        'harga_jual' => '13500',
+        'sisa_stok' => '4',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Wedang Telang',
+        'harga_beli' => '12500',
+        'harga_jual' => '16500',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Gujahe Sedawung',
+        'harga_beli' => '13500',
+        'harga_jual' => '17500',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Kerupuk Amplang',
+        'harga_beli' => '7000',
+        'harga_jual' => '9000',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Kerupuk Pangsit 3 Putri',
+        'harga_beli' => '10000',
+        'harga_jual' => '13500',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Afieka Lemon Tea',
+        'harga_beli' => '15000',
+        'harga_jual' => '20000',
+        'sisa_stok' => '1',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Zen Kopi Robusta',
+        'harga_beli' => '16000',
+        'harga_jual' => '22000',
+        'sisa_stok' => '6',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
+        'name' => 'Zen Kopi Arabika',
         'harga_beli' => '24000',
         'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'sisa_stok' => '6',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Pie Nanas',
+        'harga_beli' => '22000',
+        'harga_jual' => '30000',
+        'sisa_stok' => '23',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Jajanan Amoh Salak',
+        'harga_beli' => '16000',
+        'harga_jual' => '21000',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Jajanan Amoh Apel',
+        'harga_beli' => '18500',
+        'harga_jual' => '24000',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Jajanan Amoh Pisang',
+        'harga_beli' => '14000',
+        'harga_jual' => '18000',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Sus Coklat',
+        'harga_beli' => '13000',
+        'harga_jual' => '17500',
+        'sisa_stok' => '3',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Astor Potong',
+        'harga_beli' => '8000',
+        'harga_jual' => '11000',
+        'sisa_stok' => '9',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Semprong',
+        'harga_beli' => '5500',
+        'harga_jual' => '7000',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Cendol Keju',
+        'harga_beli' => '5500',
+        'harga_jual' => '7000',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Kacang Campur',
+        'harga_beli' => '7000',
+        'harga_jual' => '9500',
+        'sisa_stok' => '3',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => "D'Sruput Kecil",
+        'harga_beli' => '7000',
+        'harga_jual' => '9500',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Potato Mini Keju',
+        'harga_beli' => '2500',
+        'harga_jual' => '3500',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Coco Crunch',
+        'harga_beli' => '3500',
+        'harga_jual' => '5000',
+        'sisa_stok' => '7',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Nastar Ori',
+        'harga_beli' => '46000',
+        'harga_jual' => '60000',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
+        'name' => 'Nastar Keju',
         'harga_beli' => '24000',
         'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
+        'name' => 'Putri Salju',
         'harga_beli' => '24000',
         'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
+        'name' => 'Kastengel',
         'harga_beli' => '24000',
         'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Semprit Coklat',
+        'harga_beli' => '46000',
+        'harga_jual' => '60000',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Semprit Susu',
+        'harga_beli' => '41500',
+        'harga_jual' => '54000',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
       Product::create([
-        'name' => 'Hampers Cookies',
-        'harga_beli' => '24000',
-        'harga_jual' => '34000',
-        'sisa_stok' => '14',
+        'name' => 'Kue Kacang Badzlin',
+        'harga_beli' => '41500',
+        'harga_jual' => '54000',
+        'sisa_stok' => '0',
         'masa_berlaku' => '4',
         'kepemilikan' => 'Titipan UMKM',
         
     ]);
+    Product::create([
+      'name' => 'Keripik Usus Ahsan',
+      'harga_beli' => '12000',
+      'harga_jual' => '16000',
+      'sisa_stok' => '2',
+      'masa_berlaku' => '4',
+      'kepemilikan' => 'Titipan UMKM',
+      
+  ]);
+    Product::create([
+      'name' => 'Keripik Kerang Ahsan',
+      'harga_beli' => '16000',
+      'harga_jual' => '21000',
+      'sisa_stok' => '4',
+      'masa_berlaku' => '4',
+      'kepemilikan' => 'Titipan UMKM',
+      
+  ]);
+    Product::create([
+      'name' => 'Basreng Ahsan',
+      'harga_beli' => '15000',
+      'harga_jual' => '20000',
+      'sisa_stok' => '7',
+      'masa_berlaku' => '4',
+      'kepemilikan' => 'Titipan UMKM',
+      
+  ]);
+    Product::create([
+      'name' => 'Keripik Tempe Ahsan',
+      'harga_beli' => '11000',
+      'harga_jual' => '15000',
+      'sisa_stok' => '3',
+      'masa_berlaku' => '4',
+      'kepemilikan' => 'Titipan UMKM',
+      
+  ]);
+    Product::create([
+      'name' => 'Kue Satru Aulya',
+      'harga_beli' => '33000',
+      'harga_jual' => '43000',
+      'sisa_stok' => '0',
+      'masa_berlaku' => '4',
+      'kepemilikan' => 'Titipan UMKM',
+      
+  ]);
+    Product::create([
+      'name' => 'Bakpia Jogja Qu',
+      'harga_beli' => '19000',
+      'harga_jual' => '25000',
+      'sisa_stok' => '0',
+      'masa_berlaku' => '4',
+      'kepemilikan' => 'Titipan UMKM',
+      
+  ]);
+    Product::create([
+      'name' => 'Inaco',
+      'harga_beli' => '13000',
+      'harga_jual' => '18000',
+      'sisa_stok' => '8',
+      'masa_berlaku' => '4',
+      'kepemilikan' => 'Titipan UMKM',
+      
+  ]);
+    Product::create([
+      'name' => 'Bola Warna',
+      'harga_beli' => '6500',
+      'harga_jual' => '9000',
+      'sisa_stok' => '4',
+      'masa_berlaku' => '4',
+      'kepemilikan' => 'Titipan UMKM',
+      
+  ]);
+    Product::create([
+      'name' => 'Kecimpring Matang',
+      'harga_beli' => '10000',
+      'harga_jual' => '13500',
+      'sisa_stok' => '6',
+      'masa_berlaku' => '4',
+      'kepemilikan' => 'Titipan UMKM',
+      
+  ]);
+    Product::create([
+      'name' => 'Keripik Nanas Ori',
+      'harga_beli' => '15000',
+      'harga_jual' => '20000',
+      'sisa_stok' => '4',
+      'masa_berlaku' => '4',
+      'kepemilikan' => 'Titipan UMKM',
+      
+  ]);
+    Product::create([
+      'name' => 'Keripik Nanas Coklat',
+      'harga_beli' => '1600',
+      'harga_jual' => '21500',
+      'sisa_stok' => '4',
+      'masa_berlaku' => '4',
+      'kepemilikan' => 'Titipan UMKM',
+      
+  ]);
+    Product::create([
+      'name' => 'Jalu',
+      'harga_beli' => '15500',
+      'harga_jual' => '20000',
+      'sisa_stok' => '0',
+      'masa_berlaku' => '4',
+      'kepemilikan' => 'Titipan UMKM',
+      
+  ]);
+    Product::create([
+      'name' => 'Basnas',
+      'harga_beli' => '15500',
+      'harga_jual' => '20000',
+      'sisa_stok' => '0',
+      'masa_berlaku' => '4',
+      'kepemilikan' => 'Titipan UMKM',
+      
+  ]);
+    Product::create([
+      'name' => 'Zen Kopi Ekselsa',
+      'harga_beli' => '13000',
+      'harga_jual' => '17500',
+      'sisa_stok' => '3',
+      'masa_berlaku' => '4',
+      'kepemilikan' => 'Titipan UMKM',
+      
+  ]);
+    Product::create([
+      'name' => 'Sale Pisang 250 gr',
+      'harga_beli' => '13000',
+      'harga_jual' => '17500',
+      'sisa_stok' => '0',
+      'masa_berlaku' => '4',
+      'kepemilikan' => 'Titipan UMKM',
+      
+  ]);
+    Product::create([
+      'name' => 'Rengginang Ketan Hitam',
+      'harga_beli' => '15000',
+      'harga_jual' => '20000',
+      'sisa_stok' => '14',
+      'masa_berlaku' => '4',
+      'kepemilikan' => 'Titipan UMKM',
+      
+  ]);
+  Product::create([
+    'name' => 'Sale Oven',
+    'harga_beli' => '18000',
+    'harga_jual' => '24000',
+    'sisa_stok' => '6',
+    'masa_berlaku' => '4',
+    'kepemilikan' => 'Titipan UMKM',
+    
+]);
+  Product::create([
+    'name' => 'Sangan Simbah Celup',
+    'harga_beli' => '9000',
+    'harga_jual' => '15500',
+    'sisa_stok' => '0',
+    'masa_berlaku' => '4',
+    'kepemilikan' => 'Titipan UMKM',
+    
+]);
+  Product::create([
+    'name' => 'Sangan Simbah Kotak',
+    'harga_beli' => '23000',
+    'harga_jual' => '31000',
+    'sisa_stok' => '2',
+    'masa_berlaku' => '4',
+    'kepemilikan' => 'Titipan UMKM',
+    
+]);
+  Product::create([
+    'name' => 'Setup Nanas Mini',
+    'harga_beli' => '8500',
+    'harga_jual' => '11000',
+    'sisa_stok' => '0',
+    'masa_berlaku' => '4',
+    'kepemilikan' => 'Titipan UMKM',
+    
+]);
+  Product::create([
+    'name' => 'Setup Nanas Box',
+    'harga_beli' => '17000',
+    'harga_jual' => '24000',
+    'sisa_stok' => '14',
+    'masa_berlaku' => '4',
+    'kepemilikan' => 'Titipan UMKM',
+    
+]);
+  Product::create([
+    'name' => 'Ogel-Ogel Box',
+    'harga_beli' => '104000',
+    'harga_jual' => '135000',
+    'sisa_stok' => '0',
+    'masa_berlaku' => '4',
+    'kepemilikan' => 'Titipan UMKM',
+    
+]);
+  Product::create([
+    'name' => 'Ogel-Ogel',
+    'harga_beli' => '21000',
+    'harga_jual' => '27000',
+    'sisa_stok' => '0',
+    'masa_berlaku' => '4',
+    'kepemilikan' => 'Titipan UMKM',
+    
+]);
+  Product::create([
+    'name' => 'Cheese Qu Kecil',
+    'harga_beli' => '10500',
+    'harga_jual' => '14000',
+    'sisa_stok' => '5',
+    'masa_berlaku' => '4',
+    'kepemilikan' => 'Titipan UMKM',
+    
+]);
+  Product::create([
+    'name' => 'Setup Nanas Besar',
+    'harga_beli' => '16000',
+    'harga_jual' => '22000',
+    'sisa_stok' => '9',
+    'masa_berlaku' => '4',
+    'kepemilikan' => 'Titipan UMKM',
+    
+]);
+  Product::create([
+    'name' => 'Telur Asin Bakar',
+    'harga_beli' => '35000',
+    'harga_jual' => '47000',
+    'sisa_stok' => '13',
+    'masa_berlaku' => '4',
+    'kepemilikan' => 'Titipan UMKM',
+    
+]);
+Product::create([
+  'name' => 'Permen Jahe',
+  'harga_beli' => '10000',
+  'harga_jual' => '13500',
+  'sisa_stok' => '7',
+  'masa_berlaku' => '4',
+  'kepemilikan' => 'Titipan UMKM',
+  
+]);
+Product::create([
+  'name' => 'Egg Drop',
+  'harga_beli' => '8000',
+  'harga_jual' => '11000',
+  'sisa_stok' => '5',
+  'masa_berlaku' => '4',
+  'kepemilikan' => 'Titipan UMKM',
+  
+]);
+Product::create([
+  'name' => 'Ekopi Arabika Kecil',
+  'harga_beli' => '18500',
+  'harga_jual' => '24000',
+  'sisa_stok' => '5',
+  'masa_berlaku' => '4',
+  'kepemilikan' => 'Titipan UMKM',
+  
+]);
+Product::create([
+  'name' => 'Keripik Brownies',
+  'harga_beli' => '16000',
+  'harga_jual' => '21000',
+  'sisa_stok' => '0',
+  'masa_berlaku' => '4',
+  'kepemilikan' => 'Titipan UMKM',
+  
+]);
+Product::create([
+  'name' => 'Ogel-Ogel Kecil',
+  'harga_beli' => '60000',
+  'harga_jual' => '81000',
+  'sisa_stok' => '4',
+  'masa_berlaku' => '4',
+  'kepemilikan' => 'Titipan UMKM',
+  
+]);
+Product::create([
+  'name' => 'Ekopi Arabika New Pouch',
+  'harga_beli' => '22000',
+  'harga_jual' => '30000',
+  'sisa_stok' => '7',
+  'masa_berlaku' => '4',
+  'kepemilikan' => 'Titipan UMKM',
+  
+]);
+Product::create([
+  'name' => 'Puyur Matahari',
+  'harga_beli' => '22000',
+  'harga_jual' => '30000',
+  'sisa_stok' => '9',
+  'masa_berlaku' => '4',
+  'kepemilikan' => 'Titipan UMKM',
+  
+]);
+Product::create([
+  'name' => 'Kentang Mustofa Ori',
+  'harga_beli' => '8000',
+  'harga_jual' => '11000',
+  'sisa_stok' => '8',
+  'masa_berlaku' => '4',
+  'kepemilikan' => 'Titipan UMKM',
+  
+]);
+Product::create([
+  'name' => 'Kentang Mustofa',
+  'harga_beli' => '10000',
+  'harga_jual' => '13500',
+  'sisa_stok' => '5',
+  'masa_berlaku' => '4',
+  'kepemilikan' => 'Titipan UMKM',
+  
+]);
+Product::create([
+  'name' => 'Mie Biting Toples',
+  'harga_beli' => '16500',
+  'harga_jual' => '23000',
+  'sisa_stok' => '9',
+  'masa_berlaku' => '4',
+  'kepemilikan' => 'Titipan UMKM',
+  
+]);
+Product::create([
+  'name' => 'Abon Ori Tazko',
+  'harga_beli' => '17000',
+  'harga_jual' => '24000',
+  'sisa_stok' => '5',
+  'masa_berlaku' => '4',
+  'kepemilikan' => 'Titipan UMKM',
+  
+]);
+Product::create([
+  'name' => 'Abon Pedas Tazko',
+  'harga_beli' => '18000',
+  'harga_jual' => '26000',
+  'sisa_stok' => '5',
+  'masa_berlaku' => '4',
+  'kepemilikan' => 'Titipan UMKM',
+  
+]);
+Product::create([
+  'name' => 'Abon Ori Kecil',
+  'harga_beli' => '10000',
+  'harga_jual' => '13500',
+  'sisa_stok' => '10',
+  'masa_berlaku' => '4',
+  'kepemilikan' => 'Titipan UMKM',
+  
+]);
+Product::create([
+  'name' => 'Abon Pedas Kecil',
+  'harga_beli' => '11000',
+  'harga_jual' => '15000',
+  'sisa_stok' => '10',
+  'masa_berlaku' => '4',
+  'kepemilikan' => 'Titipan UMKM',
+  
+]);
     
     }
 }

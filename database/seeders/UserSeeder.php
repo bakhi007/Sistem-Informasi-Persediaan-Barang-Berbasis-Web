@@ -24,10 +24,16 @@ class UserSeeder extends Seeder
         //     'remember_token' => Str::random(10)
         // ]);
         User::create([
-          'name' => 'Admin',
-          'username' => 'admin',
-          'password' => Hash::make('password'),
-          'remember_token' => Str::random(10)
+          'username' => 'Siti Isnaeni',
+          'password' => Hash::make('4hsaN_123'),
+          'role' => 'Manajer',
+          // 'remember_token' => Str::random(10)
+      ]);
+        User::create([
+          'username' => 'Nur Khasanah',
+          'password' => Hash::make('n-word'),
+          'role' => 'Karyawan',
+          // 'remember_token' => Str::random(10)
       ]);
         // User::factory(5)->create();
     }
