@@ -165,6 +165,7 @@
           <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
+                    <th scope="col" class="px-4 py-3">Kode Produk</th>
                     <th scope="col" class="px-4 py-3">Jenis Produk</th>
                     <th scope="col" class="px-4 py-3">Harga Beli</th>
                     <th scope="col" class="px-4 py-3">Harga Jual</th>
@@ -179,7 +180,8 @@
             <tbody>
                 @foreach ($products as $product)
                 <tr class="border-b dark:border-gray-700 {{ $product->sisa_stok <= 3 ? 'bg-red-200 dark:bg-red-800' : '' }}">
-                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ ucwords($product->name) }}</th>
+                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $product->kode_barang }}</th>
+                    <td class="px-4 py-3">{{ ucwords($product->name) }}</td>
                     <td class="px-4 py-3">Rp.{{ number_format($product->harga_beli, 0, ',', '.') }}</td>
                     <td class="px-4 py-3">Rp.{{ number_format($product->harga_jual, 0, ',', '.') }}</td>
                     <td class="px-4 py-3">

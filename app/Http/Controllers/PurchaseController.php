@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Product;
 use App\Models\Purchase;
+use App\Models\Production;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -79,35 +81,59 @@ class PurchaseController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view('dashboard.transaksi.purchase.create', ['title' => 'Input Pembelian', 'products' => Product::all()]);
-    }
+{
+    // Ambil data produk
+    $products = Product::all();
+
+    return view('dashboard.transaksi.purchase.create', [
+        'title' => 'Input Pembelian',
+        'products' => $products,
+        'kode_produksi' => '' // Kosongkan dulu di sini
+    ]);
+}
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'product_id' => 'required|exists:products,id',
-            'harga_beli' => 'required|numeric',
-            'stok_masuk' => 'required|numeric',
-            'jumlah_harga_beli' => 'required|numeric',
-            'tanggal_produksi' => 'required|date',
-            'tanggal_kedaluwarsa' => 'required|date',
-        ]);
+{
+    $validatedData = $request->validate([
+        'product_id' => 'required|exists:products,id',
+        'harga_beli' => 'required|numeric',
+        'stok_masuk' => 'required|numeric',
+        'jumlah_harga_beli' => 'required|numeric',
+        'tanggal_produksi' => 'required|date',
+        'tanggal_kedaluwarsa' => 'required|date',
+    ]);
 
-        // Buat catatan pembelian
-        $purchase = Purchase::create($validatedData);
+    // Ambil produk berdasarkan product_id
+    $product = Product::find($validatedData['product_id']);
+    
+    // Konversi tanggal dan format kode_produksi
+    $kode_barang = $product->kode_barang;
+    $tanggal_produksi = Carbon::parse($validatedData['tanggal_produksi'])->format('d/m/Y');
+    $tanggal_kedaluwarsa = Carbon::parse($validatedData['tanggal_kedaluwarsa'])->format('d/m/Y');
+    $kode_produksi = "{$kode_barang}-{$tanggal_produksi}-{$tanggal_kedaluwarsa}";
 
-        // Perbarui stok produk
-        $product = Product::find($validatedData['product_id']);
-        $product->sisa_stok += $purchase->stok_masuk; // Tambahkan stok
-        $product->save();
-        
-        return redirect('/dashboard/transaksi/purchase')->with(['success' => 'Produk berhasil ditambahkan!']);
-        // return $request;
-    }
+    // Buat catatan pembelian
+    $purchase = Purchase::create(array_merge($validatedData, ['kode_produksi' => $kode_produksi]));
+
+    // Simpan data ke tabel `productions`
+    Production::create([
+      'product_id' => $validatedData['product_id'],
+      'kode_produksi' => $kode_produksi,
+      'stok_masuk' => $validatedData['stok_masuk'],
+      'tanggal_produksi' => $validatedData['tanggal_produksi'],
+      'tanggal_kedaluwarsa' => $validatedData['tanggal_kedaluwarsa'],
+  ]);
+
+    // Perbarui stok produk
+    $product->sisa_stok += $purchase->stok_masuk; // Tambahkan stok
+    $product->save();
+
+    return redirect('/dashboard/transaksi/purchase')->with(['success' => 'Produk berhasil ditambahkan!']);
+}
 
     /**
      * Display the specified resource.

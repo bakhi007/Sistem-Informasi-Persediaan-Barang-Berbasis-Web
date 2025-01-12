@@ -3,10 +3,21 @@
     <x-slot:title> {{ $title }} </x-slot:title>
       <section class="bg-white dark:bg-gray-900 flex-grow">
       <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-          <h2 class="mb-6 text-xl font-bold text-gray-900 dark:text-white pl-2 border-l-4 border-primary-700 dark:border-white">Input Pembelian</h2>
+          <h2 class="mb-6 text-xl font-bold text-gray-900 dark:text-white pl-2 border-l-4 border-primary-700 dark:border-white">Input Produksi</h2>
           <form action="/dashboard/transaksi/purchase" method="post">
             @csrf
               <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                <!-- Kode Produksi -->
+                <div class="w-full col-span-2">
+    <input 
+        type="hidden"
+        name="kode_produksi" 
+        id="kode_produksi" 
+        value="{{ $kode_produksi }}" 
+    >
+</div>
+
+
                 <!-- Jenis Produk -->
                 <div class="w-full">
                     <label for="product" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Produk</label>
@@ -19,8 +30,8 @@
                         @foreach ($products as $product)
                             <option value="{{ $product->id }}" data-masa-berlaku="{{ $product->masa_berlaku }}" 
                                 data-price="{{ $product->harga_beli }}" 
-                                {{ old('product_id') == $product->id ? 'selected' : '' }}>
-                                {{ $product->name }}
+                                {{ old('product_id') == $product->id ? 'selected' : '' }} >
+                                {{ $product->kode_barang }} - {{ $product->name }}
                             </option>
                         @endforeach
                     </select>
@@ -83,7 +94,7 @@
                 
                   <div class="w-full">
         <label for="tanggal_produksi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Tanggal Pembelian
+            Tanggal Produksi
         </label>
         <input 
             type="date" 
@@ -174,7 +185,7 @@
                 const masaBerlaku = parseInt(selectedOption.getAttribute('data-masa-berlaku'), 10); // Ambil masa berlaku
                 const expiryDate = new Date(purchaseDate);
 
-                // Tambahkan masa berlaku (dalam hari) ke tanggal pembelian
+                // Tambahkan masa berlaku (dalam hari) ke tanggal Produksi
                 expiryDate.setDate(purchaseDate.getDate() + masaBerlaku);
 
                 // Format tanggal kedaluwarsa ke YYYY-MM-DD

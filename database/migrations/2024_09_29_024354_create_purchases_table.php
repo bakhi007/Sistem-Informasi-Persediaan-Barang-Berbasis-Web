@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained(
               table: 'products', indexName: 'purchases_product_id'
           );
+            $table->string('kode_produksi');
             $table->integer('stok_masuk');
             $table->integer('harga_beli');
             $table->integer('jumlah_harga_beli');

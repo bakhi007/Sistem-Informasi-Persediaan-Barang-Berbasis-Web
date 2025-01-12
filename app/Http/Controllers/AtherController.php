@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Type;
 use App\Models\Ather;
 use App\Models\Product;
+use App\Models\Production;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -57,44 +58,72 @@ public function index(Request $request)
     /**
      * Show the form for creating a new resource.
      */
+    // eror lazy load disabled
+    // public function create()
+    // {
+    //   return view('dashboard.transaksi.ather.create', ['title' => 'Input Transaki Lain', 'productions' => Production::all(), 'types' => Type::all()]);
+    // }
+
+    // perbaikan eror lazy load disabled
     public function create()
-    {
-      return view('dashboard.transaksi.ather.create', ['title' => 'Input Transaki Lain', 'products' => Product::all(), 'types' => Type::all()]);
-    }
+{
+    return view('dashboard.transaksi.ather.create', [
+        'title' => 'Input Transaksi Lain',
+        'productions' => Production::with('product')->get(), // Eager load relasi product
+        'types' => Type::all(),
+    ]);
+}
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        // Validasi input
+{
+    // Validasi input
     $validatedData = $request->validate([
-      'product_id' => 'required|exists:products,id',
-      'type_id' => 'required|exists:types,id',
-      'harga_jual' => 'required|numeric|',
-      'stok_keluar' => 'required|numeric|min:1',
-      'tanggal_keluar' => 'required|date',
-  ]);
+        'product_id' => 'required|exists:products,id',
+        'type_id' => 'required|exists:types,id',
+        'harga_jual' => 'required|numeric',
+        'stok_keluar' => 'required|numeric|min:1',
+        'tanggal_keluar' => 'required|date',
+    ]);
 
-  // Ambil produk berdasarkan product_id
-  $product = Product::find($validatedData['product_id']);
+    // Ambil data production berdasarkan product_id
+    $production = Production::where('product_id', $validatedData['product_id'])->first();
 
-  // Validasi stok_keluar tidak melebihi sisa_stok
-  if ($validatedData['stok_keluar'] > $product->sisa_stok) {
-      return redirect()->back()->withErrors([
-          'stok_keluar' => 'Stok keluar tidak boleh lebih dari ' . $product->sisa_stok,
-      ])->withInput();
-  }
-
-  // Buat catatan transaksi lain
-  $ather = Ather::create($validatedData);
-
-  // Perbarui stok produk
-  $product->sisa_stok -= $ather->stok_keluar; // Kurangi stok
-  $product->save();
-
-  return redirect('/dashboard/transaksi/ather')->with(['success' => 'Data berhasil disimpan!']);
+    if (!$production) {
+        return redirect()->back()->withErrors([
+            'product_id' => 'Produk tidak ditemukan pada stok produksi.',
+        ])->withInput();
     }
+
+    // Validasi stok_keluar tidak melebihi stok_masuk
+    if ($validatedData['stok_keluar'] > $production->stok_masuk) {
+        return redirect()->back()->withErrors([
+            'stok_keluar' => 'Stok keluar tidak boleh lebih dari ' . $production->stok_masuk,
+        ])->withInput();
+    }
+
+    // Tambahkan kode_produksi ke data yang akan disimpan
+    $validatedData['kode_produksi'] = $production->kode_produksi;
+
+    // Buat catatan transaksi
+    $ather = Ather::create($validatedData);
+
+    // Perbarui stok di tabel production
+    $production->stok_masuk -= $ather->stok_keluar; // Kurangi stok produksi
+    $production->save();
+
+    // Perbarui stok di tabel products
+    $product = Product::find($validatedData['product_id']);
+    if ($product) {
+        $product->sisa_stok -= $ather->stok_keluar; // Kurangi sisa stok
+        $product->save();
+    }
+
+    return redirect('/dashboard/transaksi/ather')->with(['success' => 'Data berhasil disimpan!']);
+}    
 
     /**
      * Display the specified resource.

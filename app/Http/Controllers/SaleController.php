@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Nota;
 use App\Models\Sale;
 use App\Models\Product;
+use App\Models\Production;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -92,7 +93,9 @@ class SaleController extends Controller
     public function create(Request $request)
 {
     // Ambil semua produk
-    $products = Product::all();
+    // $products = Product::all();
+    // Ambil semua data dari tabel productions dengan relasi ke tabel products
+    $productions = Production::with('product')->get();
     
     // Ambil token dari URL 
     $validatedData['token'] = $request->input('id');
@@ -109,7 +112,7 @@ class SaleController extends Controller
 
     return view('dashboard.transaksi.sale.create', [
         'title' => 'Input Penjualan / Kasir',
-        'products' => $products,
+        'productions' => $productions,
         'sales' => $sales,
         'default_jumlah_harga_jual' => $totalJumlahHarga, // Total dari kolom jumlah_harga_jual
         'default_diskon' => $totalDiskon, // Total dari kolom diskon
@@ -145,38 +148,55 @@ class SaleController extends Controller
         $token = $request->input('id');
     
         if ($formType === 'form1') {
-            // Validasi untuk form 1
-            $validatedData = $request->validate([
-                'product_id' => 'required|exists:products,id',
-                'harga_jual' => 'required|numeric',
-                'stok_keluar' => 'required|numeric|min:1',
-                'jumlah_harga_jual' => 'required|numeric',
-                'diskon' => 'nullable|numeric',
-                'tanggal_penjualan' => 'required|date',
-            ]);
-    
-            // Ambil token dari URL (parameter id)
-            $validatedData['token'] = $request->input('id'); // Extract token from 'id'
-    
-            // Cek apakah token kosong
-            if (empty($validatedData['token'])) {
-                return redirect()->back()->withErrors(['token' => 'Token tidak ditemukan.'])->withInput();
-            }
-    
-            // Lanjutkan penyimpanan data ke tabel sales
-            $product = Product::find($validatedData['product_id']);
-            if ($validatedData['stok_keluar'] > $product->sisa_stok) {
-                return redirect()->back()->withErrors(['stok_keluar' => 'Stok keluar tidak boleh lebih dari ' . $product->sisa_stok])->withInput();
-            }
-    
-            $sale = Sale::create($validatedData);
-            $product->sisa_stok -= $sale->stok_keluar;
-            $product->save();
-    
-            return redirect('/dashboard/transaksi/sale/create?id=' . $validatedData['token']);
-            // return redirect('/dashboard/transaksi/sale/create?id=' . $validatedData['token'])->with(['success' => 'Post baru berhasil ditambahkan!']);
-    
-        } elseif ($formType === 'form2') {
+          $validatedData = $request->validate([
+              'product_id' => 'required|exists:products,id',
+              'harga_jual' => 'required|numeric',
+              'stok_keluar' => 'required|numeric|min:1',
+              'jumlah_harga_jual' => 'required|numeric',
+              'diskon' => 'nullable|numeric',
+              'tanggal_penjualan' => 'required|date',
+          ]);
+  
+          $validatedData['token'] = $token;
+  
+          // Cek stok dan ambil kode_produksi (FIFO)
+          $remainingStokKeluar = $validatedData['stok_keluar'];
+          $productions = Production::where('product_id', $validatedData['product_id'])
+              ->where('stok_masuk', '>', 0)
+              ->orderBy('created_at') // FIFO berdasarkan waktu masuk
+              ->get();
+  
+          foreach ($productions as $production) {
+              if ($remainingStokKeluar <= 0) {
+                  break;
+              }
+  
+              $stokToDeduct = min($production->stok_masuk, $remainingStokKeluar);
+  
+              // Simpan ke sales dengan kode_produksi
+              Sale::create([
+                  'product_id' => $validatedData['product_id'],
+                  'harga_jual' => $validatedData['harga_jual'],
+                  'stok_keluar' => $stokToDeduct,
+                  'jumlah_harga_jual' => $validatedData['jumlah_harga_jual'],
+                  'diskon' => $validatedData['diskon'],
+                  'tanggal_penjualan' => $validatedData['tanggal_penjualan'],
+                  'token' => $validatedData['token'],
+                  'kode_produksi' => $production->kode_produksi,
+              ]);
+  
+              $production->stok_masuk -= $stokToDeduct;
+              $production->save();
+  
+              $remainingStokKeluar -= $stokToDeduct;
+          }
+  
+          if ($remainingStokKeluar > 0) {
+              return redirect()->back()->withErrors(['stok_keluar' => 'Stok produksi tidak mencukupi.'])->withInput();
+          }
+  
+          return redirect('/dashboard/transaksi/sale/create?id=' . $validatedData['token']);
+      } elseif ($formType === 'form2') {
            // Periksa apakah ada data di tabel sales dengan token
             $salesCount = Sale::where('token', $token)->count();
 
@@ -223,16 +243,6 @@ class SaleController extends Controller
     
         return redirect()->back()->withErrors(['form_type' => 'Form type tidak valid.']);
     }
-    
-
-
-
-    
-    
-
-
-
-
     
 
 //     public function store(Request $request)

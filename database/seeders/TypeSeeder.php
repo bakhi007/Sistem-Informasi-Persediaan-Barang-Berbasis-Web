@@ -17,22 +17,7 @@ class TypeSeeder extends Seeder
         'name' => 'Rusak / Berjamur',
         
     ]);
-    Type::create([
-        'name' => 'Aist System',
-       
-    ]);
-    Type::create([
-        'name' => 'Delivery',
-      
-    ]);
-    Type::create([
-        'name' => 'Pesanan Pondok',
-      
-    ]);
-    Type::create([
-        'name' => 'Pesanan Retail',
-      
-    ]);
+   
     Type::create([
         'name' => 'Icip-Icip',
       

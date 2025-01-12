@@ -14,6 +14,7 @@ class Ather extends Model
 
     protected $fillable = [
         'product_id',
+        'kode_produksi',
         'type_id',
         'harga_jual',
         'stok_keluar',

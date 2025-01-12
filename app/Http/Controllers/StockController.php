@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Production;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Log;
@@ -92,7 +93,10 @@ class StockController extends Controller
      */
     public function show(string $id)
     {
-      return view('dashboard.stok.show', ['title' => 'Cetak Laporan Harian', 'products' => Product::all()]);
+      // Ambil semua data dari tabel productions dengan relasi ke tabel products
+      $productions = Production::with('product')->orderBy('created_at','desc')->get();
+    
+      return view('dashboard.stok.show', ['title' => 'Cetak Laporan Stok Barang', 'productions' => $productions]);
     }
 
     

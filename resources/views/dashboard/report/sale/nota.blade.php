@@ -2,30 +2,29 @@
   <x-sidebar>
     <x-slot:title> {{ $title }} </x-slot:title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <!-- DataTables Core -->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
-<!-- DataTables Buttons -->
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+    <!-- DataTables Buttons -->
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
 
-<!-- PDFMake -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <!-- PDFMake -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
 
 
 
     <section class="bg-white dark:bg-gray-900 flex-grow">
       <!-- div button -->
-      <div class="flex justify-between items-start">
-          <!-- div filter tanggal -->
+      <!-- <div class="flex justify-between items-start">
+          
           <div class="border border-gray-300 p-4 rounded-md shadow-md ml-4 mt-4">
               <div class="flex flex-col md:flex-row items-center space-x-0 md:space-x-4 space-y-4 md:space-y-0">
                   <div class="w-full md:w-1/2">
@@ -51,11 +50,7 @@
                   </a>
               </div>
           </div>
-          <!-- end of div filter tanggal -->
-
-          <!-- Tombol Cetak Excel dan PDF -->
           <div class="flex items-center space-x-4 mr-10 mt-4">
-              <!-- tombol cetak excel -->
               <button onclick="exportToExcel()" class="relative">
                   <div class="relative w-14 h-14 overflow-y-clip group text-center">
                       <div
@@ -68,9 +63,6 @@
                       </div>
                   </div>
               </button>
-              <!-- end of tombol cetak excel -->
-
-              <!-- tombol cetak pdf -->
               <button id="download-pdf" class="relative">
                   <div class="relative w-14 h-14 overflow-y-clip group text-center">
                       <div
@@ -83,10 +75,8 @@
                       </div>
                   </div>
               </button>
-              <!-- end of tombol cetak pdf -->
           </div>
-          <!-- end of tombol cetak -->
-      </div>
+      </div> -->
       <!-- end of div button -->
 
       <!-- Filter Tanggal New -->
@@ -127,15 +117,27 @@
                   </div>
                 </div>
               </button>
+
+              <button id="exportExcelButton" class="relative">
+                <div class="relative w-14 h-14 overflow-y-clip group text-center">
+                  <div class="flex justify-center items-center w-14 h-14 transition-all duration-300 absolute top-0 group-hover:scale-[.60] group-hover:origin-top text-white">
+                    <img src="{{url('/img/excel.png')}}" class="mr-3 h-10" alt="Excel Logo" />
+                  </div>
+                  <div class="absolute text-black font-bold -bottom-10 left-1/2 text-sm text-center whitespace-nowrap transition-all duration-300 transform -translate-x-1/2 group-hover:bottom-0">
+                    Cetak Excel
+                  </div>
+                </div>
+              </button>
+            
           </div>
       </div>
 
       <!-- nota -->
-<div class="p-8 mx-auto max-w-2xl lg:py-16" id="cetak-nota">
+<div class="p-8 mx-auto max-w-4xl lg:py-16" id="cetak-nota">
   <!-- Header nota -->
   <div class="flex justify-center items-center space-x-4">
     <div class="text-center">
-      <h2 class="mb-0 text-xl font-bold text-gray-900 dark:text-white">Laporan Nota Penjualan</h2>
+      <h2 class="mb-0 text-xl font-bold text-gray-900 dark:text-white">Laporan Penjualan</h2>
       <p class="text-sm text-gray-700 dark:text-gray-400">Ahsan Bakery & Cake</p>
     </div>
   </div>
@@ -177,14 +179,7 @@
 </tbody>
 </table>
   <!-- Akhir Tabel -->
-  <div>
-    <h3 class="mt-6 mr-3 font-normal text-gray-900 dark:text-white text-right">
-      Batang, {{ \Carbon\Carbon::now()->isoFormat('D MMMM YYYY') }}
-    </h3>
-    <h3 class="mt-20 font-normal text-gray-900 dark:text-white text-right">
-      Manager Ahsan Bakery & Cake
-    </h3>
-  </div>
+ 
 </div>
 <!-- akhir nota -->
 
@@ -264,7 +259,7 @@
         function exportToExcel() {
             // Buat array data untuk file Excel
             const data = [
-                ["Laporan Nota Penjualan"],
+                ["Laporan Penjualan"],
                 ["Ahsan Bakery & Cake"],
                 [`Tanggal: ${new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}`],
                 [`{{ auth()->user()->username }}`],
@@ -286,7 +281,7 @@
             // Buat workbook dan worksheet
             const worksheet = XLSX.utils.aoa_to_sheet(data);
             const workbook = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(workbook, worksheet, "Laporan Nota Penjualan");
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Laporan Penjualan");
 
             // Simpan file Excel
             XLSX.writeFile(workbook, "Laporan_Nota_Penjualan.xlsx");
@@ -322,140 +317,233 @@
       });
     </script>
     
-    <!-- export pdfmake -->
     <script>
     $(document).ready(function () {
+        // Inisialisasi DataTable
         const table = $('#notaTable').DataTable({
+            // paging: false,          // Menyembunyikan pagination
+            // searching: false,       // Menyembunyikan fitur pencarian
+            // info: false,            // Menyembunyikan informasi jumlah data
+            // ordering: false,        // Menonaktifkan fitur sorting pada kolom
+            // lengthChange: false,     // Menyembunyikan dropdown jumlah data per halaman
+            pageLength: 10,
+            language: {
+            zeroRecords: "Tidak ada data yang ditemukan",
+                info: "Menampilkan data _START_ sampai _END_ dari _TOTAL_ hasil",
+                infoEmpty: "Menampilkan data 0 sampai 0 dari 0 hasil",
+                infoFiltered: "(difilter dari _MAX_ total hasil)",
+                search: "Cari:",
+            paginate: {
+                first: "Pertama",
+                last: "Terakhir",
+                next: "Berikutnya",
+                previous: "Sebelumnya"
+            }
+            },
             dom: 'Bfrtip',
             buttons: [
+              {
+              extend: 'pdfHtml5',
+              text: '<span class="px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600">Export PDF</span>',
+              title: 'Laporan Penjualan\nAhsan Bakery & Cake',
+              orientation: 'portrait',
+              pageSize: 'A4',
+              exportOptions: {
+                  columns: [0, 1, 2, 3] // Kolom yang ingin diekspor
+              },
+              customize: function (doc) {
+                  const date = '{{ \Carbon\Carbon::now()->isoFormat("dddd, D MMMM YYYY") }}';
+                  const username = '{{ auth()->user()->username }}';
+
+                  // Menghitung total pendapatan dari data tabel yang terlihat
+                  let totalPendapatan = 0;
+                  const filteredData = table.rows({ filter: 'applied' }).data();
+
+                  filteredData.each(function (data) {
+                      const totalBayar = parseInt(data[3].replace(/\D/g, '')); // Menghapus simbol non-numeric
+                      totalPendapatan += totalBayar;
+                  });
+
+                  const pendapatan = 'Pendapatan: Rp ' + totalPendapatan.toLocaleString('id-ID');
+
+                  // Tambahkan tanggal, nama pengguna, dan pendapatan ke header
+                  doc.content.splice(1, 0, {
+                      columns: [
+                          {
+                              text: date,
+                              alignment: 'left',
+                              margin: [0, 5, 0, 5],
+                              fontSize: 10
+                          },
+                          {
+                              text: username,
+                              alignment: 'right',
+                              margin: [0, 5, 10, 5],
+                              fontSize: 10
+                          }
+                      ]
+                  });
+
+                  doc.content.splice(2, 0, {
+                      text: pendapatan,
+                      alignment: 'left',
+                      margin: [10, 0, 0, 10],
+                      fontSize: 10
+                  });
+
+                  // Atur lebar kolom tabel dan ratakan kolom "No." di tengah
+                  if (doc.content[3] && doc.content[3].table) {
+                      doc.content[3].table.widths = ['10%', '30%', '30%', '30%'];
+                      const tableBody = doc.content[3].table.body;
+
+                      // Menambahkan nomor urut mulai dari 1
+                      for (let i = 1; i < tableBody.length; i++) {
+                          tableBody[i][0] = { text: i, alignment: 'center' }; // Kolom No.
+                          tableBody[i][1].alignment = 'center'; // Kolom No. Nota
+                          tableBody[i][2].alignment = 'center'; // Kolom Tanggal
+                      }
+                  }
+
+                  // Tambahkan footer untuk tanggal dan tanda tangan manajer
+                  doc.content.push({
+                      columns: [
+                          {
+                              text: 'Batang, {{ \Carbon\Carbon::now()->isoFormat("D MMMM YYYY") }}',
+                              alignment: 'right',
+                              margin: [0, 10, 0, 30],
+                              fontSize: 10
+                          }
+                      ]
+                  });
+
+                  doc.content.push({
+                      columns: [
+                          {
+                              text: 'Manager Ahsan Bakery & Cake',
+                              alignment: 'right',
+                              margin: [0, 20, 0, 0],
+                              fontSize: 10
+                          }
+                      ]
+                  });
+              },
+              visible: false
+          },
                 {
-                    extend: 'pdfHtml5',
-                    text: '<span class="px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600">Export PDF</span>',
-                    title: 'Laporan Nota Penjualan\nAhsan Bakery & Cake',
-                    orientation: 'portrait',
-                    pageSize: 'A4',
+                    extend: 'excelHtml5',
+                    text: 'Export Excel', // Teks tombol
+                    title: 'Laporan Penjualan\nAhsan Bakery & Cake',
                     exportOptions: {
                         columns: [0, 1, 2, 3] // Kolom yang ingin diekspor
                     },
-                    customize: function (doc) {
-                        const date = '{{ \Carbon\Carbon::now()->isoFormat("dddd, D MMMM YYYY") }}';
-                        const username = '{{ auth()->user()->username }}';
-
-                        // Menghitung total pendapatan dari data tabel yang terlihat
-                        let totalPendapatan = 0;
-                        table.rows({ filter: 'applied' }).every(function () {
-                            const data = this.data();
-                            const totalBayar = parseInt(data[3].replace(/\D/g, '')); // Menghapus simbol non-numeric
-                            totalPendapatan += totalBayar;
-                        });
-
-                        const pendapatan = 'Pendapatan: Rp ' + totalPendapatan.toLocaleString('id-ID');
-
-                        // Tambahkan tanggal, nama pengguna, dan pendapatan ke header
-                        doc.content.splice(1, 0, {
-                            columns: [
-                                {
-                                    text: date,
-                                    alignment: 'left',
-                                    margin: [10, 5, 0, 5],
-                                    fontSize: 10
-                                },
-                                {
-                                    text: username,
-                                    alignment: 'right',
-                                    margin: [0, 5, 10, 5],
-                                    fontSize: 10
-                                }
-                            ]
-                        });
-
-                        doc.content.splice(2, 0, {
-                            text: pendapatan,
-                            alignment: 'left',
-                            margin: [10, 0, 0, 10],
-                            fontSize: 10
-                        });
-
-                        // Atur lebar kolom tabel dan ratakan kolom "No." di tengah
-                        if (doc.content[3] && doc.content[3].table) {
-                            doc.content[3].table.widths = ['10%', '30%', '30%', '30%'];
-                            const tableBody = doc.content[3].table.body;
-                            for (let i = 1; i < tableBody.length; i++) {
-                                tableBody[i][0].alignment = 'center'; // Kolom No.
-                                tableBody[i][1].alignment = 'center'; // Kolom No. Nota
-                                tableBody[i][2].alignment = 'center'; // Kolom Tanggal
-                            }
-                        }
-
-                        // Tambahkan footer untuk tanggal dan tanda tangan manajer
-                        doc.content.push({
-                            columns: [
-                                {
-                                    text: 'Batang, {{ \Carbon\Carbon::now()->isoFormat("D MMMM YYYY") }}',
-                                    alignment: 'right',
-                                    margin: [0, 10, 0, 30],
-                                    fontSize: 10
-                                }
-                            ]
-                        });
-
-                        doc.content.push({
-                            columns: [
-                                {
-                                    text: 'Manager Ahsan Bakery & Cake',
-                                    alignment: 'right',
-                                    margin: [0, 20, 0, 0],
-                                    fontSize: 10
-                                }
-                            ]
-                        });
-                    },
-                    visible: false
-                }
-            ]
+                },
+            ],
         });
-        
-// Fungsi untuk memfilter tabel berdasarkan tanggal
-$('#filterButton').on('click', function () {
-    const startDate = $('#startDate').val();
-    const endDate = $('#endDate').val();
 
-    // Kosongkan filter sebelumnya
-    $.fn.dataTable.ext.search.splice(0, $.fn.dataTable.ext.search.length);
+        // Filter berdasarkan tanggal
+        $('#filterButton').on('click', function () {
+            const startDate = $('#startDate').val();
+            const endDate = $('#endDate').val();
 
-    // Tambahkan filter baru
-    $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
-        const createdAtString = $(table.row(dataIndex).node()).find('td[data-created-at]').data('created-at');
-        if (!createdAtString) return true; // Jika data tidak ditemukan, jangan saring baris tersebut
+            // Reset filter
+            $.fn.dataTable.ext.search.splice(0, $.fn.dataTable.ext.search.length);
 
-        const createdAt = new Date(createdAtString);
-        const start = startDate ? new Date(startDate) : null;
-        const end = endDate ? new Date(endDate) : null;
+            // Filter baru
+            $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+                const createdAtString = $(table.row(dataIndex).node())
+                    .find('td[data-created-at]')
+                    .data('created-at');
+                if (!createdAtString) return true;
 
-        if (start) start.setHours(0, 0, 0, 0);
-        if (end) end.setHours(23, 59, 59, 999);
+                const createdAt = new Date(createdAtString);
+                const start = startDate ? new Date(startDate) : null;
+                const end = endDate ? new Date(endDate) : null;
 
-        if (
-            (!start && !end) ||
-            (!start && createdAt <= end) ||
-            (start && !end && createdAt >= start) ||
-            (start && end && createdAt >= start && createdAt <= end)
-        ) {
-            return true;
-        }
-        return false;
-    });
+                if (start) start.setHours(0, 0, 0, 0);
+                if (end) end.setHours(23, 59, 59, 999);
 
-    table.draw(); // Refresh tabel
-});
+                return (!start && !end) || 
+                      (!start && createdAt <= end) || 
+                      (start && !end && createdAt >= start) || 
+                      (start && end && createdAt >= start && createdAt <= end);
+            });
 
+            // Terapkan filter ke tabel
+            table.draw();
 
-        // Tombol untuk ekspor PDF
+            // Hitung ulang total pendapatan berdasarkan data yang terlihat
+            let totalPendapatan = 0;
+            table.rows({ filter: 'applied' }).every(function () {
+                const data = this.data();
+                const totalBayar = parseInt(data[3].replace(/\D/g, '')); // Kolom pendapatan
+                totalPendapatan += totalBayar;
+            });
+
+            // Perbarui elemen pendapatan di halaman
+            $('#pendapatan').text(
+                'Pendapatan: +Rp' + totalPendapatan.toLocaleString('id-ID')
+            );
+        });
+
+        // Trigger tombol untuk ekspor PDF
         $('#exportPDFButton').on('click', function () {
-            table.button(0).trigger(); // Trigger fungsi ekspor PDF
+            table.button(0).trigger();
         });
 
         $('.buttons-pdf').hide(); // Sembunyikan tombol default
+
+        // Trigger tombol untuk ekspor Excel
+$('#exportExcelButton').on('click', function () {
+    // Hitung total pendapatan dari data tabel
+    let totalPendapatan = 0;
+    table.rows({ filter: 'applied' }).every(function () {
+        const data = this.data();
+        const totalBayar = parseInt(data[3].replace(/\D/g, ''));
+        totalPendapatan += totalBayar;
+    });
+
+    const pendapatanText = totalPendapatan; // Simpan total pendapatan sebagai integer
+
+    // Buat array untuk data Excel
+    const rows = [];
+
+    // Tambahkan header tambahan di atas tabel
+    rows.push(['Laporan Penjualan']);
+    rows.push(['Ahsan Bakery & Cake']);
+    rows.push(['']);
+    rows.push([`Tanggal: ${new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}`]);
+    rows.push([`{{ auth()->user()->username }}`]);
+    rows.push([`Pendapatan: ${pendapatanText}`]); // Pendapatan sebagai integer
+    rows.push(['']); // Baris kosong sebelum tabel
+
+    // Ambil header tabel
+    const header = ['No.', 'No. Nota', 'Tanggal', 'Pendapatan'];
+    rows.push(header);
+
+    // Ambil data dari body tabel
+    const filteredRows = table.rows({ filter: 'applied' }).data(); // Ambil data yang telah difilter
+    filteredRows.each(function (data, index) {
+        const noNota = data[1]; // No. Nota
+        const tanggal = data[2]; // Tanggal
+        const pendapatan = parseInt(data[3].replace(/\D/g, '')); // Pendapatan tanpa simbol dan format
+
+        // Tambahkan baris dengan nomor urut, No. Nota, Tanggal, dan Pendapatan sebagai integer
+        rows.push([
+            index + 1, // Nomor urut dimulai dari 1
+            noNota,
+            tanggal,
+            pendapatan, // Pendapatan sebagai integer
+        ]);
+    });
+
+    // Buat worksheet dan workbook
+    const worksheet = XLSX.utils.aoa_to_sheet(rows);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Laporan Nota');
+
+    // Simpan file Excel
+    XLSX.writeFile(workbook, 'Laporan_Nota_Penjualan.xlsx');
+});
     });
 </script>
 

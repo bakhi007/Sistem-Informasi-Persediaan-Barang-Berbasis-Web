@@ -20,6 +20,7 @@ class Sale extends Model
     // use HasFactory, Sluggable;
     protected $fillable = [
       'product_id',
+      'kode_produksi',
       'stok_keluar',
       'harga_jual',
       'jumlah_harga_jual', // Pastikan 'author_id' termasuk di sini

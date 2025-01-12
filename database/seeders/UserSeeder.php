@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
         User::create([
           'username' => 'Nur Khasanah',
           'password' => Hash::make('n-word'),
-          'role' => 'Karyawan',
+          'role' => 'Karyawan Kasir',
           // 'remember_token' => Str::random(10)
       ]);
         // User::factory(5)->create();

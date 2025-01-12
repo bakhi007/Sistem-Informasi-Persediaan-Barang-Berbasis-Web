@@ -19,6 +19,7 @@ return new class extends Migration
         $table->foreignId('type_id')->constrained(
           table: 'types', indexName: 'athers_type_id'
       );
+        $table->string('kode_produksi');
         $table->integer('harga_jual');
         $table->integer('stok_keluar');
         $table->dateTime('tanggal_keluar');

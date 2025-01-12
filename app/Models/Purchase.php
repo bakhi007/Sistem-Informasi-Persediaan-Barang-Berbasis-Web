@@ -20,6 +20,7 @@ class Purchase extends Model
     // use HasFactory, Sluggable;
     protected $fillable = [
         'product_id',
+        'kode_produksi',
         'stok_masuk',
         'harga_beli',
         'jumlah_harga_beli',

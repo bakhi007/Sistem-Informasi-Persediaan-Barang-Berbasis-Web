@@ -4,12 +4,12 @@
       <section class="bg-white dark:bg-gray-900 flex-grow">
       <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
           <h2 id="current-date" class="mb-4 text-xl font-bold text-gray-900 dark:text-white text-right"></h2>
-          <h2 class="mb-6 text-xl font-bold text-gray-900 dark:text-white pl-2 border-l-4 border-primary-700 dark:border-white">Input Penjualan / Kasir</h2>
+          <h2 class="mb-6 text-xl font-bold text-gray-900 dark:text-white pl-2 border-l-4 border-primary-700 dark:border-white">Input Penjualan</h2>
           <form action="/sale?id={{ $token }}" method="post" id="form1" novalidate>
             @csrf
             <input type="hidden" name="form_type" value="form1">
               <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                <div class="w-full">
+                <div class="w-full col-span-2">
                     <label for="product" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Produk</label>
                     <select id="product" name="product_id" class="select2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
                         @error('product_id') border-red-500 bg-red-50 @enderror
@@ -17,12 +17,13 @@
                         onchange="updateMaxStock()">
                         
                         <option value="" disabled selected>Pilih Produk</option>
-                        @foreach ($products as $product)
-                            <option value="{{ $product->id }}" data-sisa-stok="{{ $product->sisa_stok }}" 
-                                data-masa-berlaku="{{ $product->masa_berlaku }}" 
-                                data-price="{{ $product->harga_jual }}" 
-                                {{ old('product_id') == $product->id ? 'selected' : '' }}>
-                                {{ $product->name }}
+                        @foreach ($productions as $production)
+                            <option value="{{ $production->product_id }}" 
+                                data-sisa-stok="{{ $production->stok_masuk }}" 
+                                data-masa-berlaku="{{ $production->product->masa_berlaku }}" 
+                                data-price="{{ $production->product->harga_jual }}" 
+                                {{ old('product_id') == $production->product_id ? 'selected' : '' }}>
+                                {{ $production->kode_produksi }} - {{ $production->product->name }}
                             </option>
                         @endforeach
                     </select>

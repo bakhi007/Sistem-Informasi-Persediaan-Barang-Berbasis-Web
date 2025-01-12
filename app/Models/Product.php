@@ -10,7 +10,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'masa_berlaku', 'harga_beli', 'harga_jual', 'sisa_stok', 'kepemilikan'];
+    protected $fillable = ['kode_barang', 'name', 'masa_berlaku', 'harga_beli', 'harga_jual', 'sisa_stok', 'kepemilikan'];
     
     public function purchases(): HasMany
     {
@@ -23,5 +23,9 @@ class Product extends Model
     public function athers(): HasMany
     {
         return $this->hasMany(Ather::class); //product_id sebagai foreign key di table athers
+    }
+    public function productions(): HasMany
+    {
+        return $this->hasMany(Production::class); //product_id sebagai foreign key di table purchases
     }
 }
